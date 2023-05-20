@@ -31,7 +31,7 @@ import Twitter from "./SocialMedia/Twitter";
 import Dictionary from "./Education/Dictionary";
 import ArticleGallery from "./Education/ArticleGallery";
 import Quiz from "./Education/Quiz";
-import Repo from "./Education/Repo"
+import Repo from "./Education/Repo";
 
 import Gallery from "./Gallery";
 const App = () => {
@@ -55,16 +55,15 @@ const App = () => {
 
           <Route path="/Instagram" element={<InstagramPost />} />
           <Route path="/Twitter" element={<Twitter />} />
-          <Route path="/Gallery" element={<><Github></Github><Repo/><Quiz/><Dictionary/></>} />
-          <Route path="/Climate" element={   <Homepage />   } />
- <Route path="/EventForm" element={   <EventForm />   } />
-  <Route path="/Result" element={   <Result />   } />
-<Route path="/Card" element={   <Card />   } />
-<Route path="/Description" element={   <Description />   } />
-<Route path="/Cart" element={   <Cart />   } />
-<Route path="/Certi" element={   <Cert />   } />
+          <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/Climate" element={<Homepage />} />
+          <Route path="/EventForm" element={<EventForm />} />
+          <Route path="/Result" element={<Result />} />
+          <Route path="/Card" element={<Card />} />
+          <Route path="/Description" element={<Description />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/Certi" element={<Cert />} />
 
- 
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Climate" element={<Homepage />} />
           <Route path="/EventForm" element={<EventForm />} />
