@@ -92,6 +92,7 @@ const App = () => {
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
           <Route path="/Richtext" element={<Richtext />} />
+        
         </Routes>
         <Footer2 />
       </div>

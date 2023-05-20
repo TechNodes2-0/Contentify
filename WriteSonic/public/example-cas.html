@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Apps Integration</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- <script src="navigation.js"></script> -->
+</head>
+
+<body>
+    <div class="contentBox" id="contentBox">
+        <h1 class="text-2xl font-bold">CalcXpert</h1>
+        
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <div class="card bg-blue-500 hover:bg-blue-600">
+            <a class="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded" id="app_graphing" href="example-graphing.html">
+              Graphing
+            </a>
+          </div>
+          <div class="card bg-green-500 hover:bg-green-600">
+            <a class="appBtn app-icon-geometry text-white font-bold py-2 px-4 rounded" id="app_geometry" href="example-geometry.html">
+              Geometry
+            </a>
+          </div>
+          <div class="card bg-yellow-500 hover:bg-yellow-600">
+            <a class="appBtn app-icon-scientific text-white font-bold py-2 px-4 rounded" id="app_scientific" href="example-scientific.html">
+              Scientific
+            </a>
+          </div>
+          <div class="card bg-purple-500 hover:bg-purple-600">
+            <a class="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded" id="app_cas" href="example-cas.html">
+              CAS
+            </a>
+          </div>
+          <div class="card bg-red-500 hover:bg-red-600">
+            <a class="appBtn app-icon-3d text-white font-bold py-2 px-4 rounded" id="app_3d" href="example-3d.html">
+              3D
+            </a>
+          </div>
+          <div class="card bg-gray-500 hover:bg-gray-600">
+            <a class="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded" id="app_classic" href="example-tools.html">
+              Classic
+            </a>
+          </div>
+
+		
+		<h5>CAS Calculator</h5>
+        <p class="text">GeoGebra CAS Calculator can be embedded as an app. Preloading resources is optional.<br>
+        For details about customization please refer to <a  class="inlineLink" target="_blank" href="https://wiki.geogebra.org/en/Reference:Applet_Parameters">Documentation</a>.<br>
+		For details about the app have a look at <a class="inlineLink" target="_blank" href="https://www.geogebra.org/m/mxtyvd22">Learn CAS Calculator</a>.</p>
+        
+		
+        <script type="text/javascript" src="https://www.geogebra.org/apps/deployggb.js"></script>
+        <script type="text/javascript">
+				function perspective(p){
+					ggbApplet.setPerspective(p);
+				}
+                var parameters = {
+                        "id":"ggbApplet",
+                        "appName":"cas",
+                        "width":800,
+                        "height":550,
+                        "showToolBar":true,
+                        "borderColor":null,
+                        "showMenuBar":true,
+                        "allowStyleBar":true,
+                        "showAlgebraInput":true,
+                        "enableLabelDrags":false,
+                        "enableShiftDragZoom":true,
+                        "capturingThreshold":null,
+                        "showToolBarHelp":false,
+                        "errorDialogsActive":true,
+                        "showTutorialLink":true,
+                        "showLogging":true,
+                        "useBrowserForJS":false};
+
+                var applet = new GGBApplet(parameters, true);
+               //  when used with Math Apps Bundle, uncomment this:
+               //  applet.setHTML5Codebase('GeoGebra/HTML5/5.0/web3d/');
+
+                window.onload = function() { applet.inject('applet_container'); }
+
+        </script>
+
+
+      <p>  <div id="applet_container"></div></p>
+		</div>
+</body>
+
+</html>
