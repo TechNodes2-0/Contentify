@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import FinalArticle from './FinalArticle'
+
 const OutlineSelection = (Intro,Title) => {
-  const [articles, setArticles] = useState([]);
+const [articles, setArticles] = useState([]);
 console.log(Intro);
 console.log(Intro.Intro.intro);
 console.log(Intro.Title);
@@ -36,16 +37,21 @@ async function GiveIntros()
 {
     const Newarticles =[];
     
-    try {
-        for (let i = 0; i < 3; i++) {
-           
+    try {         
             const response = await Output();
             const title = response.data; 
-            console.log(title[0]);
-            console.log(title[0].text);
+            console.clear();
             // Assuming the response contains the generated title
-            const introWithNewLines = title[0].text.replace(/\n/g, '\n\n'); // Insert double new lines
-            Newarticles.push({ id: Date.now() + Math.random(), intro: introWithNewLines });
+            for(let i =0;i<3;i++){
+            let introWithNewLines = JSON.stringify(title[i].text); // Insert double new lines
+            console.log("this is new introWithNewLines ",introWithNewLines)
+
+            let withBrTag = introWithNewLines.replace(/\\n/g,"<br>").replace(/^"|"$/g, "").replace(/<br>/g, "<br>&#x25cf; ");
+            withBrTag = "&#x25cf; " +withBrTag
+            console.log("this is new withBrTag ",withBrTag)
+            
+            Newarticles.push({ id: Date.now() + Math.random(), intro: withBrTag});
+            console.log("this is new articel ",Newarticles)
         }
 
         setArticles(Newarticles);
@@ -75,6 +81,7 @@ async function GiveIntros()
       alert('Please select an article');
     }
   };
+  // const modifiedIntro = article[0]
 
   return (
     <>
@@ -88,7 +95,8 @@ async function GiveIntros()
           className={`article-card ${selectedArticle === article ? 'selected' : 'not-selected'} bg-${selectedArticle === article ? 'blue' : 'gray'}-200 border border-blue-300 rounded p-4 mb-4 cursor-pointer`}
           onClick={() => handleArticleClick(article)}
         >
-          {article.intro}
+        {/* { article.intro } */}
+           <div dangerouslySetInnerHTML={{ __html: article.intro }} />
           <br></br>
         </div>
       
