@@ -91,7 +91,15 @@ const FinalArticleSection = ({ Title, Intro, Outline }) => {
       setIsLoading(false);
     }
   }
-
+  const downloadArticle = () => {
+    const element = document.createElement('a');
+    const file = new Blob([generatedArticle], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = 'generated_article.txt';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
   useEffect(() => {
     generateArticle();
   }, []);
