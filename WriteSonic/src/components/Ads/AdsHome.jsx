@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function AdsHome() {
   return (
@@ -56,7 +57,7 @@ export default function AdsHome() {
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/1048/1048966.png"
+                    src="https://cdn-icons-png.flaticon.com/512/2504/2504923.png"
                     alt="mockup"
                     width="40px"
                   />
@@ -68,17 +69,17 @@ export default function AdsHome() {
                   This feature simplifies assignment creation and allows for
                   convenient sharing and storage in a standardized PDF format.
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/LinkedInAds"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
-                </a>
+                </Link>
               </div>
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/3488/3488426.png"
+                    src="https://cdn-icons-png.flaticon.com/512/2504/2504903.png"
                     alt="mockup"
                     width="40px"
                   />
@@ -93,12 +94,12 @@ export default function AdsHome() {
                   keywords, topics, or specific criteria. Find relevant
                   projects, libraries, and resources for your development needs.
                 </p>
-                <a
-                  href="/Github"
+                <Link
+                  to="/FacebookAds"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
-                </a>
+                </Link>
               </div>
             </div>
           </div>
