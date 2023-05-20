@@ -7,7 +7,7 @@ export default function CardsArea() {
       <Card title="Articles/Blog Posts" link="/Articles" />
       <Card title="Ads" link="/Ads" />
       <Card title="Social-Media-Posts" link="/SocialMedia" />
-      <Card title="Educational-Materials" link="/Gallery" />
+      <Card title="Educational-Materials" link="/EduHome" />
       <Card title="Climate-Change-Resources" link="/Climate" />
     </div>
   );

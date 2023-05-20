@@ -34,6 +34,7 @@ import Quiz from "./Education/Quiz";
 import Repo from "./Education/Repo";
 import Temp from "./Temp";
 import Gallery from "./Gallery";
+import EduHome from "./Education/EduHome";
 import Demo from "./Demo";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
@@ -59,6 +60,7 @@ const App = () => {
 
           <Route path="/Instagram" element={<InstagramPost />} />
           <Route path="/Twitter" element={<Twitter />} />
+          <Route path="/EduHome" element={<EduHome />} />
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Climate" element={<Homepage />} />
           <Route path="/EventForm" element={<EventForm />} />
@@ -68,7 +70,7 @@ const App = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
 
-          <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/Gallery" element={<EduHome />} />
           <Route path="/Climate" element={<Homepage />} />
           <Route path="/EventForm" element={<EventForm />} />
           <Route path="/Result" element={<Result />} />
