@@ -16,7 +16,7 @@
             {
               headers: {
                 'Accept': 'application/vnd.github+json',
-                'Authorization': 'Bearer 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',
+                'Authorization': `Bearer ${process.env.API_KEY}`,
                 'X-GitHub-Api-Version': '2022-11-28',
               },
             }
