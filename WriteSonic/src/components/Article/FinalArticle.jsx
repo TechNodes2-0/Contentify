@@ -2,6 +2,31 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../RichTextComponent.css"; // Import CSS file
 
+<<<<<<< Updated upstream
+=======
+import { useAuth0 } from "@auth0/auth0-react";
+
+const styles = {
+  h1: {
+    margin: '20px 0',
+    fontSize: '24px',
+    color: '#FF5722', // Bright orange color
+    fontWeight: 'bold',
+  },
+  h2: {
+    margin: '10px 0',
+    fontSize: '20px',
+    color: '#2196F3', // Bright blue color
+    fontWeight: 'bold',
+  },
+  p: {
+    margin: '10px 0',
+    fontSize: '16px',
+    color: '#4CAF50', // Bright green color
+    fontWeight: 'normal',
+  },
+};
+>>>>>>> Stashed changes
 const RichTextComponent = ({ content }) => {
   const [formattedParagraphs, setFormattedParagraphs] = useState('');
 
@@ -49,8 +74,18 @@ const RichTextComponent = ({ content }) => {
 };
 
 const FinalArticleSection = ({ Title, Intro, Outline }) => {
+<<<<<<< Updated upstream
   const [generatedArticle, setGeneratedArticle] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+=======
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log(user);
+
+  const [generatedArticle, setGeneratedArticle] = useState('');
+ console.log(Title);
+ console.log(Intro);
+ console.log(Outline);
+>>>>>>> Stashed changes
   async function generateArticle() {
     setIsLoading(true);
     const postData = {
@@ -91,7 +126,32 @@ const FinalArticleSection = ({ Title, Intro, Outline }) => {
       setIsLoading(false);
     }
   }
+
+
+
+    async function save()
+    {
+      console.log(Title);
+      console.log(generatedArticle);
+      console.log(user.sub);
+      try {
+        // Send a POST request to the server to save the article
+        const response = await axios.post('http://localhost:3000/articles', {
+          userId: user.sub,
+         title : Title,
+          content: generatedArticle,
+        });
+  
+        console.log('Article saved:', response.data);
+        // Reset the form
+        // setTitle('');
+        // setContent('');
+      } catch (error) {
+        console.error('Error saving article:', error);
+      }
+    }
   const downloadArticle = () => {
+    save();
     const element = document.createElement('a');
     const file = new Blob([generatedArticle], { type: 'text/plain' });
     element.href = URL.createObjectURL(file);

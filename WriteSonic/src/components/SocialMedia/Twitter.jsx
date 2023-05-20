@@ -1,7 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { TwitterShareButton } from "react-share";
+import { useAuth0 } from "@auth0/auth0-react";
 function TwitterPostGenerator() {
+  const { user, isAuthenticated } = useAuth0();
   const [topic, setTopic] = useState("");
   const [image, setImage] = useState("");
   const [generatedPost, setGeneratedPost] = useState("");
@@ -61,6 +63,29 @@ function TwitterPostGenerator() {
 
     window.open(twitterShareUrl, "_blank");
   };
+  async function save()
+  {
+    
+    console.log(generatedPost);
+    console.log(user.sub);
+    try {
+      // Send a POST request to the server to save the article
+      const response = await axios.post('http://localhost:3000/social-media-posts', {
+        userId: user.sub,
+       
+        content: generatedPost,
+        image:`${URL.createObjectURL(image)}`,
+        Typo:"TwitterPost"
+      });
+
+      console.log('TwitterPost saved:', response.data);
+      // Reset the form
+      // setTitle('');
+      // setContent('');
+    } catch (error) {
+      console.error('Error saving twitterPost:', error);
+    }
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -112,6 +137,12 @@ function TwitterPostGenerator() {
             >
               Alternative Share
             </button>
+            <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={save}
+      >
+        Save Post
+      </button>
           </div>
 
         </div>
