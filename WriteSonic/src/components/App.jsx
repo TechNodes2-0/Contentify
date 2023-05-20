@@ -36,6 +36,7 @@ import Temp from "./Temp";
 import Gallery from "./Gallery";
 import EduHome from "./Education/EduHome";
 import Demo from "./Demo";
+import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
 const App = () => {
@@ -47,7 +48,11 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
-          <Route exact path="/SocialMedia" element={<SocialMedia />}></Route>
+          <Route
+            exact
+            path="/SocialMedia"
+            element={<SocialmediaHome />}
+          ></Route>
           <Route exact path="/Ads" element={<Ads />}></Route>
           <Route path="/LinkedInAds" element={<LinkedInAds />} />
           <Route path="/FacebookAds" element={<FacebookAds />} />
