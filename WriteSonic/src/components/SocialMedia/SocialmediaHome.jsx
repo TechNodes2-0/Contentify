@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import InstagramPost from "./InstagramPost";
 
 export default function SocialmediaHome() {
@@ -72,12 +73,12 @@ export default function SocialmediaHome() {
                   colors, and graphics. Add captions, hashtags, and tags to
                   enhance your post's reach.
                 </p>
-                <a
-                  linkto="InstagramPost"
+                <Link
+                  to="/Instagram"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline space-y- "
                 >
                   Check out here
-                </a>
+                </Link>
               </div>
 
               <div>
@@ -98,12 +99,12 @@ export default function SocialmediaHome() {
                   content. Add compelling captions and relevant hashtags to
                   enhance visibility and engagement
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/LinkedIn"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
-                </a>
+                </Link>
               </div>
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
@@ -122,12 +123,12 @@ export default function SocialmediaHome() {
                   various templates, fonts, colors, and emojis to make them
                   visually appealing
                 </p>
-                <a
-                  href="#"
+                <Link
+                  to="/Twitter"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
-                </a>
+                </Link>
               </div>
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
