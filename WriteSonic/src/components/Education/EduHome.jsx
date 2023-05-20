@@ -72,7 +72,7 @@ export default function EduHome() {
                   want to explore.
                 </p>
                 <a
-                  href="#"
+                  href="/Dictionary"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline space-y- "
                 >
                   Check out here
@@ -96,7 +96,7 @@ export default function EduHome() {
                   variety of engaging and thought-provoking questions.
                 </p>
                 <a
-                  href="#"
+                  href="/Quiz"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
@@ -143,7 +143,7 @@ export default function EduHome() {
                   projects, libraries, and resources for your development needs.
                 </p>
                 <a
-                  href="#"
+                  href="/Github"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
                   Check out here
