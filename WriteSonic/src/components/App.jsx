@@ -35,7 +35,9 @@ import Quiz from "./Education/Quiz";
 import Repo from "./Education/Repo";
 import Temp from "./Temp";
 import Gallery from "./Gallery";
+import EduHome from "./Education/EduHome";
 import Demo from "./Demo";
+import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
 const App = () => {
@@ -47,7 +49,11 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
-          <Route exact path="/SocialMedia" element={<SocialMedia />}></Route>
+          <Route
+            exact
+            path="/SocialMedia"
+            element={<SocialmediaHome />}
+          ></Route>
           <Route exact path="/Ads" element={<Ads />}></Route>
           <Route path="/LinkedInAds" element={<LinkedInAds />} />
           <Route path="/FacebookAds" element={<FacebookAds />} />
@@ -57,9 +63,13 @@ const App = () => {
           <Route path="/Article" element={<Article />} />
           <Route path="/About" element={<About />} />
           <Route path="/LinkedIn" element={<LinkedInPost />} />
+          <Route path="/Github" element={<Github />} />
+          <Route path="/Dictionary" element={<Dictionary />} />
+          <Route path="/Quiz" element={<Quiz/>} />
 
           <Route path="/Instagram" element={<InstagramPost />} />
           <Route path="/Twitter" element={<Twitter />} />
+          <Route path="/EduHome" element={<EduHome />} />
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Climate" element={<Homepage />} />
           <Route path="/EventForm" element={<EventForm />} />
@@ -69,7 +79,7 @@ const App = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
 
-          <Route path="/Gallery" element={<Gallery />} />
+          <Route path="/Gallery" element={<EduHome />} />
           <Route path="/Climate" element={<Homepage />} />
           <Route path="/EventForm" element={<EventForm />} />
           <Route path="/Result" element={<Result />} />
