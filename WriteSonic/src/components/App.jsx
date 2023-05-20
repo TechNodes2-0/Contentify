@@ -32,13 +32,15 @@ import Dictionary from "./Education/Dictionary";
 import ArticleGallery from "./Education/ArticleGallery";
 import Quiz from "./Education/Quiz";
 import Repo from "./Education/Repo";
-
+import Temp from './Temp'
 import Gallery from "./Gallery";
 const App = () => {
   return (
     <div>
+        <Temp/>
       <h1 className="overflow-y-auto">
         <Navbar />
+      
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
@@ -72,6 +74,7 @@ const App = () => {
           <Route path="/Description" element={<Description />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
+          <Route path="/temp" element={<Temp />} />
         </Routes>
       </h1>
     </div>
