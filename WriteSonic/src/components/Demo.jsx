@@ -1,231 +1,126 @@
-import React from "react";
-import { Carousel } from "react-responsive-carousel";
-import { Link } from "react-router-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { useEffect } from "react";
 
 export default function Demo() {
+  useEffect(() => {
+    function perspective(p) {
+      window.ggbApplet.setPerspective(p);
+    }
+
+    const parameters = {
+      id: "ggbApplet",
+      appName: "3d",
+      width: 800,
+      height: 550,
+      showToolBar: true,
+      borderColor: null,
+      showMenuBar: true,
+      allowStyleBar: true,
+      showAlgebraInput: true,
+      enableLabelDrags: false,
+      enableShiftDragZoom: true,
+      capturingThreshold: null,
+      showToolBarHelp: false,
+      errorDialogsActive: true,
+      showTutorialLink: true,
+      showLogging: true,
+      useBrowserForJS: false,
+    };
+
+    const loadScript = () => {
+      const script = document.createElement("script");
+      script.src = "https://www.geogebra.org/apps/deployggb.js";
+      script.async = true;
+      script.onload = () => {
+        const applet = new window.GGBApplet(parameters, true);
+        applet.inject("applet_container");
+      };
+      document.body.appendChild(script);
+    };
+
+    loadScript();
+  }, []);
+
   return (
-    <Carousel
-      showArrows={true}
-      showThumbs={false}
-      showStatus={false}
-      infiniteLoop={true}
-      renderArrowPrev={(onClickHandler, hasPrev, label) =>
-        hasPrev && (
-          <button
-            type="button"
-            onClick={onClickHandler}
-            title={label}
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: 15,
-              zIndex: 2,
-            }}
-          >
-            Previous
-          </button>
-        )
-      }
-      renderArrowNext={(onClickHandler, hasNext, label) =>
-        hasNext && (
-          <button
-            type="button"
-            onClick={onClickHandler}
-            title={label}
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: 15,
-              zIndex: 2,
-            }}
-          >
-            Next
-          </button>
-        )
-      }
-      renderIndicator={(onClickHandler, isSelected, index, label) => {
-        if (isSelected) {
-          return (
-            <li
-              style={{
-                background: "blue",
-                width: 10,
-                height: 10,
-                margin: 10,
-                borderRadius: "50%",
-              }}
-              aria-label={`Selected: ${label} ${index + 1}`}
-              title={`Selected: ${label} ${index + 1}`}
-            />
-          );
-        }
-        return (
-          <li
-            style={{
-              background: "gray",
-              width: 8,
-              height: 8,
-              margin: 10,
-              borderRadius: "50%",
-            }}
-            onClick={onClickHandler}
-            onKeyDown={onClickHandler}
-            value={index}
-            key={index}
-            role="button"
-            tabIndex={0}
-            title={`${label} ${index + 1}`}
-            aria-label={`${label} ${index + 1}`}
-          />
-        );
-      }}
-    >
-      <div className="grid grid-cols-3 gap-10">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 1 */}
-          <div className="p-5">
-            <a href="#">
-              <h5 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                Card 1 Title
-              </h5>
-            </a>
-            <p className="mb-3 text-gray-700 dark:text-gray-400">
-              Card 1 description goes here.
-            </p>
-            <Link
-              to="/card1"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Go To
-              <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </Link>
-          </div>
-        </div>
+    <div className="contentBox" id="contentBox">
+      <h1>Apps Integration</h1>
 
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 2 */}
-          <div className="p-5">
-            <a href="#">
-              <h5 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                Card 2 Title
-              </h5>
-            </a>
-            <p className="mb-3 text-gray-700 dark:text-gray-400">
-              Card 2 description goes here.
-            </p>
-            <Link
-              to="/card2"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Go To
-              <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </Link>
-          </div>
-        </div>
+      <p>
+        <br />
+        <a
+          className="appBtn app-icon-graphing"
+          id="app_graphing"
+          href="example-graphing.html"
+        >
+          Graphing
+        </a>
+        <a
+          className="appBtn app-icon-geometry"
+          id="app_geometry"
+          href="example-geometry.html"
+        >
+          Geometry
+        </a>
+        <a
+          className="appBtn app-icon-scientific"
+          id="app_scientific"
+          href="example-scientific.html"
+        >
+          Scientific
+        </a>
+        <a className="appBtn app-icon-cas" id="app_cas" href="example-cas.html">
+          CAS
+        </a>
+        <a
+          className="appBtn app-icon-3d active"
+          id="app_3d"
+          href="example-3d.html"
+        >
+          3D
+        </a>
+        <a
+          className="appBtn app-icon-classic"
+          id="app_classic"
+          href="example-tools.html"
+        >
+          Classic
+        </a>
+        <br />
+        <br />
+        <a
+          className="appBtn noimage"
+          id="app_editor"
+          href="example-editor.html"
+        >
+          Equation Editor
+        </a>
+      </p>
 
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 3 */}
-          <div className="p-5">
-            <a href="#">
-              <h5 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                Card 3 Title
-              </h5>
-            </a>
-            <p className="mb-3 text-gray-700 dark:text-gray-400">
-              Card 3 description goes here.
-            </p>
-            <Link
-              to="/card3"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Go To
-              <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </div>
+      <h5>3D Calculator</h5>
+      <p className="text">
+        GeoGebra CAS Calculator can be embedded as an app. Preloading resources
+        is optional.
+        <br />
+        For details about customization please refer to{" "}
+        <a
+          className="inlineLink"
+          target="_blank"
+          href="https://wiki.geogebra.org/en/Reference:Applet_Parameters"
+        >
+          Documentation
+        </a>
+        .<br />
+        For details about the app have a look at{" "}
+        <a
+          className="inlineLink"
+          target="_blank"
+          href="https://www.geogebra.org/m/aWhYSpvy"
+        >
+          Learn 3D Calculator
+        </a>
+        .
+      </p>
 
-      <div className="grid grid-cols-3 gap-10">
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 4 */}
-          <div className="p-5">
-            <a href="#">
-              <h5 className="mb-2 text-2xl font-bold text-gray-900 dark:text-white">
-                Card 4 Title
-              </h5>
-            </a>
-            <p className="mb-3 text-gray-700 dark:text-gray-400">
-              Card 4 description goes here.
-            </p>
-            <Link
-              to="/card4"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Go To
-              <svg
-                aria-hidden="true"
-                className="w-4 h-4 ml-2 -mr-1"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </Link>
-          </div>
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 5 */}
-          {/* ... */}
-        </div>
-
-        <div className="bg-white border border-gray-200 rounded-lg shadow-lg dark:bg-gray-800 dark:border-gray-700">
-          {/* Card 6 */}
-          {/* ... */}
-        </div>
-      </div>
-    </Carousel>
+      <div id="applet_container"></div>
+    </div>
   );
 }

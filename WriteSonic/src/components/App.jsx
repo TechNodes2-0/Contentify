@@ -22,7 +22,7 @@ import Card from "./Climate/Card";
 import Description from "./Climate/Description";
 import Cart from "./Climate/Cart";
 import EventForm from "./Climate/EventForm";
-import Richtext from "./Richtext"
+import Richtext from "./Richtext";
 
 import Cert from "./Climate/Cert";
 
@@ -40,6 +40,7 @@ import Demo from "./Demo";
 import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
+import AdsHome from "./Ads/AdsHome";
 const App = () => {
   return (
     <div>
@@ -54,7 +55,7 @@ const App = () => {
             path="/SocialMedia"
             element={<SocialmediaHome />}
           ></Route>
-          <Route exact path="/Ads" element={<Ads />}></Route>
+          <Route exact path="/Ads" element={<AdsHome />}></Route>
           <Route path="/LinkedInAds" element={<LinkedInAds />} />
           <Route path="/FacebookAds" element={<FacebookAds />} />
 
@@ -89,8 +90,8 @@ const App = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
-          <Route path="/Test" element={<Demo />} /> 
-          <Route path="/Richtext" element={<Richtext />} /> 
+          <Route path="/Test" element={<Demo />} />
+          <Route path="/Richtext" element={<Richtext />} />
         </Routes>
         <Footer2 />
       </div>
