@@ -64,10 +64,11 @@ const App = () => {
           <Route path="/LinkedIn" element={<LinkedInPost />} />
           <Route path="/Github" element={<Github />} />
           <Route path="/Dictionary" element={<Dictionary />} />
-          <Route path="/Quiz" element={<Quiz/>} />
+          <Route path="/Quiz" element={<Quiz />} />
 
           <Route path="/Instagram" element={<InstagramPost />} />
           <Route path="/Twitter" element={<Twitter />} />
+          <Route path="/Linkedin" element={<LinkedInPost />} />
           <Route path="/EduHome" element={<EduHome />} />
           <Route path="/Gallery" element={<Gallery />} />
           <Route path="/Climate" element={<Homepage />} />
