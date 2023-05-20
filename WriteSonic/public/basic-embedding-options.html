@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+        <title>Single applet: iframe embedding</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script src="navigation.js"></script>
+</head>
+
+<body>
+<div class="contentBox" id="contentBox">
+        <h1>Embedding Options</h1>
+		<div class="text"><br>To embed GeoGebra applets into your website there are two options: embedding them directly as div elements or using iFrame embedding. 
+		For the user both options look the same, though embedding an applet as a div element gives you more freedom to set various parameters.</div>
+	 <script type="text/javascript" src="https://www.geogebra.org/apps/deployggb.js"></script>
+        <script type="text/javascript">
+                var parameters = {
+                        "width":800,
+                        "height":400,
+                        "prerelease":false,
+                        "showToolBar":false,
+                        "borderColor":null,
+                        "showMenuBar":false,
+                        "showAlgebraInput":false,
+                        "showResetIcon":false,
+                        "enableLabelDrags":false,
+                        "enableShiftDragZoom":true,
+                        "enableRightClick":false,
+                        "capturingThreshold":null,
+                        "showToolBarHelp":true,
+                        "errorDialogsActive":true,
+						"showFullscreenButton":true,
+                        "useBrowserForJS":false,
+                        "material_id":"zrtmrj3s"};
+                var applet = new GGBApplet(parameters, true);
+              //  when used with Math Apps Bundle, uncomment this:
+              //  applet.setHTML5Codebase('GeoGebra/HTML5/5.0/web/');
+
+                window.onload = function() { applet.inject(applet_container); }
+        </script>
+
+	<p><h5>Direct Embedding</h5>
+		<div class="text">The recommended way to embed a GeoGebra applet into your website is to embed it directly as a div element. 
+		Using div embedding enables you to change settings of your applet like the size of the app, showing or hiding the menu, disabling CAS and much more.
+		To learn more about embedding options have a look at <a class="inlineLink" href="https://www.geogebra.org/m/sehv2qc9">How to embed GeoGebra apps and activities into websites</a>.</div>
+	
+        <div id="applet_container"></div>
+	</p>
+	
+	<p><h5>Iframe Embedding</h5>
+	<div class="text">An easy way to embed an activity into your website is to use iframe embedding. 
+	As iframe embedding isn't very flexible and isn't fully supported on iOS, we recommend you use this only if no other option is available. 
+	This can be the case e.g. if you want to include an activity into a content management system that accepts only iframe embedding  (e.g. Moodle). 
+	To get an embedding code follow the steps described in <a class="inlineLink" href="https://www.geogebra.org/m/sehv2qc9">How to embed GeoGebra apps and activities into websites</a>.</div>
+	</p>
+	<iframe 
+    scrolling="no" 
+    title="First Activity" 
+    src="https://www.geogebra.org/material/iframe/id/zrtmrj3s/width/800/height/400/border/999999/sfsb/true/szb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/false/ctl/false"
+    width="800px" 
+    height="400px" 
+    style="border:0px;"
+    fullscreen> 
+   </iframe>
+   
+</div>
+</body>
+
+</html>
