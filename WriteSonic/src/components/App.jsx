@@ -22,6 +22,7 @@ import Card from "./Climate/Card";
 import Description from "./Climate/Description";
 import Cart from "./Climate/Cart";
 import EventForm from "./Climate/EventForm";
+import Richtext from "./Richtext"
 
 import Cert from "./Climate/Cert";
 
@@ -77,7 +78,8 @@ const App = () => {
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
-          <Route path="/Test" element={<Demo />} />
+          <Route path="/Test" element={<Demo />} /> 
+          <Route path="/Richtext" element={<Richtext />} /> 
         </Routes>
         <Footer2 />
       </div>
