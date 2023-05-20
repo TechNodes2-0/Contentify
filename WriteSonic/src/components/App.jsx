@@ -34,10 +34,13 @@ import Quiz from "./Education/Quiz";
 import Repo from "./Education/Repo";
 
 import Gallery from "./Gallery";
+import Demo from "./Demo";
+import { Footer } from "flowbite-react";
+import Footer2 from "./Footer2";
 const App = () => {
   return (
     <div>
-      <h1 className="overflow-y-auto">
+      <div className="overflow-y-auto">
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
@@ -72,8 +75,10 @@ const App = () => {
           <Route path="/Description" element={<Description />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
+          <Route path="/Test" element={<Demo />} />
         </Routes>
-      </h1>
+        <Footer2 />
+      </div>
     </div>
   );
 };
