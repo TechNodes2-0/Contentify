@@ -32,7 +32,7 @@ import Dictionary from "./Education/Dictionary";
 import ArticleGallery from "./Education/ArticleGallery";
 import Quiz from "./Education/Quiz";
 import Repo from "./Education/Repo";
-import Temp from './Temp'
+import Temp from "./Temp";
 import Gallery from "./Gallery";
 import Demo from "./Demo";
 import { Footer } from "flowbite-react";
@@ -40,11 +40,9 @@ import Footer2 from "./Footer2";
 const App = () => {
   return (
     <div>
-        <Temp/>
-     
       <div className="overflow-y-auto">
         <Navbar />
-      
+
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
