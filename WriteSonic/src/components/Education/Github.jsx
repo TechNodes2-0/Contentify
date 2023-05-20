@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const Search = () => {
+  let name="";
   const [searchTerm, setSearchTerm] = useState("");
   const [repositories, setRepositories] = useState([]);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -13,6 +14,7 @@ const Search = () => {
           .join(" ")}`
       );
       const data = await response.json();
+      console.log(data);
       const results = data.items;
       setRepositories(results);
     } catch (error) {
@@ -71,7 +73,8 @@ const Search = () => {
             key={repo.id}
             className="border border-gray-300 rounded p-4 mb-4"
           >
-            <h4 className="text-xl font-bold mb-2">{repo.name}</h4>
+            <a href ={`https://github.com/${repo.full_name}`}> <h4 className="text-xl font-bold mb-2">{repo.name}</h4></a>
+           
             <p>{repo.description}</p>
           </div>
         ))}
