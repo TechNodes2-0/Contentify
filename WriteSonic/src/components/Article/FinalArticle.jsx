@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+
 const styles = {
   h1: {
     margin: '20px 0',
@@ -86,7 +88,15 @@ console.log(response.data.data[0].content);
       throw error;
     }
   }
-
+  const downloadArticle = () => {
+    const element = document.createElement('a');
+    const file = new Blob([generatedArticle], { type: 'text/plain' });
+    element.href = URL.createObjectURL(file);
+    element.download = 'generated_article.txt';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  };
   useEffect(() => {
     generateArticle();
   }, []);
@@ -97,6 +107,12 @@ console.log(response.data.data[0].content);
       {/* <div className="generated-article">{generatedArticle}</div> */}
       <div>
       <RichTextComponent content={generatedArticle} /></div>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={downloadArticle}
+      >
+        Download Article
+      </button>
     </div>
   );
 };
