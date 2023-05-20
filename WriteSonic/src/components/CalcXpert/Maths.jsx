@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-export default function Demo() {
+export default function Maths() {
   useEffect(() => {
     function perspective(p) {
       window.ggbApplet.setPerspective(p);
@@ -42,7 +42,7 @@ export default function Demo() {
 
   return (
     <div className="contentBox" id="contentBox">
-      <h1 className="text-2xl font-bold">Apps Integration</h1>
+      <h1 className="text-2xl font-bold">CalcXpert</h1>
 
       <div className="grid grid-cols-3 gap-4 mt-4">
         <div className="card bg-blue-500 hover:bg-blue-600">
@@ -99,13 +99,18 @@ export default function Demo() {
             Classic
           </a>
         </div>
+        <div className="card bg-gray-500 hover:bg-gray-600">
+          <a
+            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
+            id="app_classic"
+            href="example-tools.html"
+          >
+            Equation Editor
+          </a>
+        </div>
       </div>
 
-      <p className="mt-4">
-        <a className="appBtn noimage" id="app_editor" href="example-editor.html">
-          Equation Editor
-        </a>
-      </p>
+      
 
       <h5 className="text-xl font-bold mt-8">3D Calculator</h5>
       <p className="text">

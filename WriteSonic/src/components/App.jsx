@@ -25,7 +25,7 @@ import EventForm from "./Climate/EventForm";
 import Richtext from "./Richtext";
 
 import Cert from "./Climate/Cert";
-
+import Maths from "./CalcXpert/Maths";
 import LinkedInPost from "./SocialMedia/LinkedInPost";
 import Twitter from "./SocialMedia/Twitter";
 
@@ -91,6 +91,7 @@ const App = () => {
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
+          <Route path="/CalcXpert" element={<Maths />} />
           <Route path="/Richtext" element={<Richtext />} />
         
         </Routes>
