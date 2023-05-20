@@ -6,6 +6,7 @@ Contentify 🚀
 
 - Nishit Baria 👨‍💻
 - Jayesh Yadav 👨‍💻
+- Vinayak Vispute 💻
 
 ## Description
 
