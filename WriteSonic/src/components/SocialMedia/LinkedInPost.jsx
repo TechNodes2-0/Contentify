@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { FaLinkedin, FaCopy, FaEdit } from "react-icons/fa";
 import axios from "axios";
-
+import { useAuth0 } from "@auth0/auth0-react";
 function LinkedInPost() {
+  
   const [topic, setTopic] = useState("");
   const [tone, setTone] = useState("");
   const [company, setCompany] = useState("");
@@ -12,7 +13,7 @@ function LinkedInPost() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedPost, setEditedPost] = useState("");
   const [editedPostIndex, setEditedPostIndex] = useState(null);
-
+  const { user, isAuthenticated } = useAuth0();
   async function Output() {
     const postData = {
       instructions: topic,
@@ -73,7 +74,29 @@ function LinkedInPost() {
     updatedPosts[editedPostIndex] = editedPost;
     setGeneratedPosts(updatedPosts);
   };
+  async function save()
+  {
+    
+    console.log(generatedPosts);
+    console.log(user.sub);
+    try {
+      // Send a POST request to the server to save the article
+      const response = await axios.post('http://localhost:3000/social-media-posts', {
+        userId: user.sub,
+       
+        content: generatedPosts[0],
+        image:"",
+        Typo:"LinkedInPost"
+      });
 
+      console.log('LinkedInPost saved:', response.data);
+      // Reset the form
+      // setTitle('');
+      // setContent('');
+    } catch (error) {
+      console.error('Error saving LinkedInPost:', error);
+    }
+  }
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-blue-100">
       <div className="flex justify-between w-full p-8 bg-white shadow-lg rounded-lg">
@@ -143,7 +166,12 @@ function LinkedInPost() {
                   </button>
                   <button onClick={() => handleCopyPost(post)}>
                     <FaCopy className="text-blue-500 hover:text-blue-700 transition duration-200" />
-                  </button>
+                  </button> <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={save}
+      >
+        Save Post
+      </button>
                 </div>
               </div>
               {isEditing && editedPostIndex === index ? (
