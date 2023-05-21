@@ -50,6 +50,7 @@ import Cas from "./CalcXpert/Cas";
 import ScientificCalculator from "./CalcXpert/ScientificCalculator";
 import Classic from "./CalcXpert/Classic";
 import ThreeD from "./CalcXpert/ThreeD";
+import Demo2 from "./Demo2"
 const App = () => {
   return (
     <div>
@@ -101,6 +102,7 @@ const App = () => {
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
+          <Route path="/Tester" element={<Demo2 />} />
        
           <Route path="/CalcXpert" element={<Maths />} />
           <Route path="/Grapic" element={<Grapic />} />

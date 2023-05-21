@@ -13,7 +13,7 @@ export default function PaintingGallery() {
     const fetchArtworks = async () => {
       try {
         const response = await axios.get(
-          `https://api.harvardartmuseums.org/image?apikey=4999591a-0cb8-4936-b00b-013e0c791e38&size=9&page=1&q=width:>400`
+            `https://api.harvardartmuseums.org/image?apikey=4999591a-0cb8-4936-b00b-013e0c791e38&page=10&type=studycenterviews`
         );
         console.log(response.data);
         setArtworks(response.data.records);
@@ -59,7 +59,6 @@ export default function PaintingGallery() {
               />
               <h3 className="text-lg font-bold mb-1">{artwork.caption}</h3>
               <p className="text-sm text-gray-500 mb-2">Technique: {artwork.technique}</p>
-              <p className="text-sm text-gray-500">Colors:</p>
             </div>
           ))}
         </div>
