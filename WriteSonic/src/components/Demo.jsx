@@ -1,138 +1,68 @@
-import React, { useEffect } from "react";
+import React,{useState,useEffect} from 'react'
 
-export default function Demo() {
-  useEffect(() => {
-    function perspective(p) {
-      window.ggbApplet.setPerspective(p);
-    }
+import axios from 'axios';
 
-    const parameters = {
-      id: "ggbApplet",
-      appName: "3d",
-      width: 800,
-      height: 550,
-      showToolBar: true,
-      borderColor: null,
-      showMenuBar: true,
-      allowStyleBar: true,
-      showAlgebraInput: true,
-      enableLabelDrags: false,
-      enableShiftDragZoom: true,
-      capturingThreshold: null,
-      showToolBarHelp: false,
-      errorDialogsActive: true,
-      showTutorialLink: true,
-      showLogging: true,
-      useBrowserForJS: false,
+export default function PaintingGallery() {
+    const [artworks, setArtworks] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+  
+    useEffect(() => {
+      fetchArtworks();
+    }, []);
+  
+    const fetchArtworks = async () => {
+      try {
+        const response = await axios.get(
+            `https://api.harvardartmuseums.org/image?apikey=4999591a-0cb8-4936-b00b-013e0c791e38&page=10&type=studycenterviews`
+        );
+        console.log(response.data);
+        setArtworks(response.data.records);
+      } catch (error) {
+        console.log('Error fetching artworks:', error);
+      }
     };
-
-    const loadScript = () => {
-      const script = document.createElement("script");
-      script.src = "https://www.geogebra.org/apps/deployggb.js";
-      script.async = true;
-      script.onload = () => {
-        const applet = new window.GGBApplet(parameters, true);
-        applet.inject("applet_container");
-      };
-      document.body.appendChild(script);
+  
+    const handleSearch = (event) => {
+      setSearchQuery(event.target.value);
     };
-
-    loadScript();
-  }, []);
-
-  return (
-    <div className="contentBox" id="contentBox">
-      <h1 className="text-2xl font-bold">Apps Integration</h1>
-
-      <div className="grid grid-cols-3 gap-4 mt-4">
-        <div className="card bg-blue-500 hover:bg-blue-600">
-          <a
-            className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
-            id="app_graphing"
-            href="example-graphing.html"
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      fetchArtworks();
+    };
+  
+    return (
+      <div className="container mx-auto py-6">
+        <h2 className="text-2xl font-bold mb-4">Recommended Artworks</h2>
+        <form onSubmit={handleSubmit} className="mb-4">
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Search Artworks"
+            className="border border-gray-300 rounded px-4 py-2 mr-2 focus:outline-none focus:border-blue-500"
+          />
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           >
-            Graphing
-          </a>
-        </div>
-        <div className="card bg-green-500 hover:bg-green-600">
-          <a
-            className="appBtn app-icon-geometry text-white font-bold py-2 px-4 rounded"
-            id="app_geometry"
-            href="example-geometry.html"
-          >
-            Geometry
-          </a>
-        </div>
-        <div className="card bg-yellow-500 hover:bg-yellow-600">
-          <a
-            className="appBtn app-icon-scientific text-white font-bold py-2 px-4 rounded"
-            id="app_scientific"
-            href="example-scientific.html"
-          >
-            Scientific
-          </a>
-        </div>
-        <div className="card bg-purple-500 hover:bg-purple-600">
-          <a
-            className="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded"
-            id="app_cas"
-            href="example-cas.html"
-          >
-            CAS
-          </a>
-        </div>
-        <div className="card bg-red-500 hover:bg-red-600">
-          <a
-            className="appBtn app-icon-3d text-white font-bold py-2 px-4 rounded"
-            id="app_3d"
-            href="example-3d.html"
-          >
-            3D
-          </a>
-        </div>
-        <div className="card bg-gray-500 hover:bg-gray-600">
-          <a
-            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
-            id="app_classic"
-            href="example-tools.html"
-          >
-            Classic
-          </a>
+            Search
+          </button>
+        </form>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {artworks.map((artwork) => (
+            <div key={artwork.id} className="bg-white rounded shadow-md p-4">
+              <img
+                src={artwork.baseimageurl}
+                alt="Artwork"
+                className="w-full h-48 object-cover mb-2"
+              />
+              <h3 className="text-lg font-bold mb-1">{artwork.caption}</h3>
+              <p className="text-sm text-gray-500 mb-2">Technique: {artwork.technique}</p>
+            </div>
+          ))}
         </div>
       </div>
-
-      <p className="mt-4">
-        <a className="appBtn noimage" id="app_editor" href="example-editor.html">
-          Equation Editor
-        </a>
-      </p>
-
-      <h5 className="text-xl font-bold mt-8">3D Calculator</h5>
-      <p className="text">
-        GeoGebra CAS Calculator can be embedded as an app. Preloading resources
-        is optional.
-        <br />
-        For details about customization please refer to{" "}
-        <a
-          className="inlineLink"
-          target="_blank"
-          href="https://wiki.geogebra.org/en/Reference:Applet_Parameters"
-        >
-          Documentation
-        </a>
-        .<br />
-        For details about the app have a look at{" "}
-        <a
-          className="inlineLink"
-          target="_blank"
-          href="https://www.geogebra.org/m/aWhYSpvy"
-        >
-          Learn 3D Calculator
-        </a>
-        .
-      </p>
-
-      <div id="applet_container"></div>
-    </div>
-  );
-}
+    );
+  }
+  

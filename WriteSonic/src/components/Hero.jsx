@@ -92,6 +92,33 @@ export default function Hero() {
               <div>
                 <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                   <img
+                    src="https://cdn-icons-png.flaticon.com/512/462/462649.png"
+                    alt="mockup"
+                    width="40px"
+                  />
+                </div>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">
+                  Article Summarizer
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">
+                  Article Summarizer is a handy tool that utilizes artificial
+                  intelligence to condense lengthy articles into concise and
+                  informative summaries. By employing advanced natural language
+                  processing algorithms, the Summarizer analyzes the key points,
+                  main ideas, and relevant details of an article, extracting the
+                  most important information.
+                </p>
+                <Link
+                  to="/Summarize"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline space-y- "
+                >
+                  Check out here
+                </Link>
+              </div>
+
+              <div>
+                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                  <img
                     src="https://cdn-icons-png.flaticon.com/512/4187/4187272.png"
                     alt="mockup"
                     width="40px"
@@ -152,6 +179,32 @@ export default function Hero() {
                 <h3 class="mb-2 text-xl font-bold dark:text-white">
                   {" "}
                   Climate Change Resources
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">
+                  This feature aims to provide users with a comprehensive
+                  collection of resources related to climate change. It serves
+                  as a hub for information, education, and awareness on the
+                  topic.
+                </p>
+                <Link
+                  to="/Climate"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Check out here
+                </Link>
+              </div>
+
+              <div>
+                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1048/1048944.png"
+                    alt="mockup"
+                    width="40px"
+                  />
+                </div>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">
+                  {" "}
+                  Art and Cluture
                 </h3>
                 <p class="text-gray-500 dark:text-gray-400">
                   This feature aims to provide users with a comprehensive

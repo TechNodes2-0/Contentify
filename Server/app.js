@@ -6,8 +6,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
-
+const superagent = require('superagent');
+const axios =require('axios');
 
 // Route to generate the RSS feed
 app.use(express.static('/public'));
@@ -222,12 +222,76 @@ app.get("/content", (req, res) => {
   
   
 
+  const AXIOS_OPTIONS = {
+    baseURL: 'https://artsandculture.google.com',
+    headers: {
+      'User-Agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36',
+    },
+    params: {
+      hl: 'en',
+    },
+  };
+  
+  function getResultsFromCategory(categoryContent) {
+    const artistsPattern = /cobject","(?<artist>[^"]+)","(?<works>[^ ]+) \w+","(?<thumbnail>[^"]+)","(?<link>[^"]+)/gm;
+  
+    return [...categoryContent.matchAll(artistsPattern)].map(({ groups }) => ({
+      artist: groups.artist,
+      works: groups.works,
+      thumbnail: `https:${groups.thumbnail}`,
+      link: `${AXIOS_OPTIONS.baseURL}${JSON.parse(`"${groups.link}"`)}`,
+    }));
+  }
+  
+  async function getArtistsInfo() {
+    try {
+      const { data } = await axios.get('/category/artist', AXIOS_OPTIONS);
+      const results = {};
+  
+      const popularCategoryPattern = /"PopularAssets:(?<content>.+?)\["stella\.pr/gm;
+      [...data.matchAll(popularCategoryPattern)].forEach(({ groups }) => (results.popular = getResultsFromCategory(groups.content)));
+  
+      const azCategoryPattern = /"(?<letter>[^"])",\["stella\.pr","(?<content>.+?)[\w"||\d]\]{2,3},\[/gm;
+      [...data.matchAll(azCategoryPattern)].forEach(({ groups }) => (results[groups.letter] = getResultsFromCategory(groups.content)));
+  
+      const timeCategoryPattern = /\[{1,2}"(?<time>[^"]{3,8})","?\w{4,7}.+?\["stella\.pr","DatedAssets(?<content>.+?)"?\d{3,5}"\]/gm;
+      [...data.matchAll(timeCategoryPattern)].forEach(({ groups }) => (results[groups.time] = getResultsFromCategory(groups.content)));
+  
+      return results;
+    } catch (error) {
+      console.log('Error fetching artists info:', error);
+      throw error;
+    }
+  }
+  
+  app.get('/arts', async (req, res) => {
+    try {
+      const artistsInfo = await getArtistsInfo();
+      res.json(artistsInfo);
+    } catch (error) {
+      res.status(500).json({ error: 'Error fetching artists info' });
+    }
+  });
 
 
 
 
-
-
+app.post('/art', (req, res) => {
+    superagent
+      .post('https://api.artsy.net/api/tokens/xapp_token')
+      .send({ client_id: "06a8d4276b6d62191c3a", client_secret: "6e77fddb513e94a3ef1a6ac2db0ec807" })
+      .end((err, response) => {
+        if (err) {
+          console.error('Error authenticating:', err);
+          res.status(500).json({ error: 'Failed to authenticate' });
+        } else {
+          xappToken = response.body.token;
+          res.status(200).json({ token: xappToken });
+        }
+      });
+  });
+  
 // Start the server
 app.listen(3000, () => {
     console.log('Server started on port 3000');
