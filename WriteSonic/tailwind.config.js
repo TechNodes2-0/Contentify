@@ -53,6 +53,8 @@ export default {
         "Segoe UI Symbol",
         "Noto Color Emoji",
       ],
+       satoshi: ['Satoshi', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
     },
   },
   plugins: [],
