@@ -47,7 +47,7 @@ const App = () => {
     <div>
       <div className="overflow-y-auto">
         <Navbar />
-<History/>
+
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
