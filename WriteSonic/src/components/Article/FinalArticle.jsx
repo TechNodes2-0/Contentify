@@ -38,7 +38,7 @@ const RichTextComponent = ({ content }) => {
           {
             headers: {
               'Accept': 'application/vnd.github+json',
-              'Authorization': 'Bearer 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',
+              'Authorization': 'Bearer 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',
               'X-GitHub-Api-Version': '2022-11-28',
             },
           }
