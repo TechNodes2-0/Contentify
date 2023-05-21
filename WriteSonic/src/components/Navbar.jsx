@@ -57,12 +57,12 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                to="/Profile"
                 className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
               >
                 Services
-              </a>
+              </Link>
             </li>
             <li>
               <a
@@ -94,13 +94,13 @@ function Navbar() {
             <li>
               {isAuthenticated && (
                 <div className="flex  gap-4 ">
-                  <a href="/Profile" target="_blank" rel="noopener noreferrer">
+                  <Link to="/Profile">
                     <img
                       className="w-10 h-10 rounded-full"
                       src={user.picture}
                       alt={user.name}
                     />
-                  </a>
+                  </Link>
 
                   <p class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation ">
                     {" "}
