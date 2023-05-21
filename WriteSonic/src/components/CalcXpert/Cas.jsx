@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 
-export default function Maths() {
+export default function Cas() {
   useEffect(() => {
     function perspective(p) {
       window.ggbApplet.setPerspective(p);
@@ -9,7 +8,7 @@ export default function Maths() {
 
     const parameters = {
       id: "ggbApplet",
-      appName: "3d",
+      appName: "cas",
       width: 800,
       height: 550,
       showToolBar: true,
@@ -43,31 +42,32 @@ export default function Maths() {
 
   return (
     <div
-      className="text-center bg-gray-500 text-white py-4"
+      className="contentBox flex flex-col items-center justify-center"
       style={{
         backgroundImage: "linear-gradient(to bottom, #2c3e50, #3498db)",
+        color: "white",
       }}
     >
-      <h1 className="text-4xl font-bold mb-8">CalcXpert</h1>
+      <h1 className="text-2xl font-bold">CalcXpert</h1>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4 mt-4">
         <div className="card bg-blue-500 hover:bg-blue-600">
-          <Link
+          <a
             className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
             id="app_graphing"
-            to="/Grapic"
+            href="example-graphing.html"
           >
             Graphing
-          </Link>
+          </a>
         </div>
         <div className="card bg-green-500 hover:bg-green-600">
-          <Link
+          <a
             className="appBtn app-icon-geometry text-white font-bold py-2 px-4 rounded"
             id="app_geometry"
-            to="/Geometry"
+            href="example-geometry.html"
           >
             Geometry
-          </Link>
+          </a>
         </div>
         <div className="card bg-yellow-500 hover:bg-yellow-600">
           <a
@@ -79,13 +79,13 @@ export default function Maths() {
           </a>
         </div>
         <div className="card bg-purple-500 hover:bg-purple-600">
-          <Link
+          <a
             className="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded"
             id="app_cas"
-            to="/Cas"
+            href="example-cas.html"
           >
             CAS
-          </Link>
+          </a>
         </div>
         <div className="card bg-red-500 hover:bg-red-600">
           <a
@@ -105,21 +105,14 @@ export default function Maths() {
             Classic
           </a>
         </div>
-        <div className="card bg-gray-500 hover:bg-gray-600">
-          <a
-            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
-            id="app_classic"
-            href="example-tools.html"
-          >
-            Equation Editor
-          </a>
-        </div>
       </div>
 
-      <h5 className="text-2xl font-bold mt-8">3D Calculator</h5>
-      <p className="text-lg mt-4">
+      <h5 className="text-2xl font-bold mt-8">CAS Calculator</h5>
+      <p className="text">
         GeoGebra CAS Calculator can be embedded as an app. Preloading resources
-        is optional. For details about customization, please refer to the{" "}
+        is optional.
+        <br />
+        For details about customization please refer to{" "}
         <a
           className="inlineLink"
           target="_blank"
@@ -127,17 +120,20 @@ export default function Maths() {
         >
           Documentation
         </a>
-        . For details about the app, have a look at the{" "}
+        .
+        <br />
+        For details about the app have a look at{" "}
         <a
           className="inlineLink"
           target="_blank"
-          href="https://www.geogebra.org/m/aWhYSpvy"
+          href="https://www.geogebra.org/m/mxtyvd22"
         >
-          Learn 3D Calculator
+          Learn CAS Calculator
         </a>
+        .
       </p>
 
-      <div id="applet_container" className=" p-4 m-auto"></div>
+      <div id="applet_container"></div>
     </div>
   );
 }

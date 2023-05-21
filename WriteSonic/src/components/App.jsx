@@ -42,6 +42,12 @@ import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
 import AdsHome from "./Ads/AdsHome";
 import History from "./History";
+import Grapic from "./CalcXpert/Grapic";
+import Geometry from "./CalcXpert/Geometry";
+import Cas from "./CalcXpert/Cas";
+import ScientificCalculator from "./CalcXpert/ScientificCalculator";
+import Classic from "./CalcXpert/Classic";
+import ThreeD from "./CalcXpert/ThreeD";
 const App = () => {
   return (
     <div>
@@ -94,8 +100,16 @@ const App = () => {
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
           <Route path="/CalcXpert" element={<Maths />} />
+          <Route path="/Grapic" element={<Grapic />} />
+          <Route path="/Geometry" element={<Geometry />} />
+          <Route path="/Cas" element={<Cas />} />
+          <Route path="/Classic" element={<Classic />} />
+          <Route path="/ThreeD" element={<ThreeD />} />
+          <Route
+            path="/ScientificCalculator"
+            element={<ScientificCalculator />}
+          />
           <Route path="/Richtext" element={<Richtext />} />
-        
         </Routes>
 
         <Footer2 />
