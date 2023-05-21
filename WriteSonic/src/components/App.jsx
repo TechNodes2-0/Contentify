@@ -2,6 +2,7 @@ import { useState } from "react";
 import Home from "./Home";
 
 import Profile from "./Profile";
+
 // import "../style/App.css";
 import Navbar from "./Navbar";
 import Hero from "./Hero";
@@ -28,7 +29,7 @@ import Cert from "./Climate/Cert";
 import Maths from "./CalcXpert/Maths";
 import LinkedInPost from "./SocialMedia/LinkedInPost";
 import Twitter from "./SocialMedia/Twitter";
-
+import Summarize from "./summarize/App";
 import Dictionary from "./Education/Dictionary";
 import ArticleGallery from "./Education/ArticleGallery";
 import Quiz from "./Education/Quiz";
@@ -95,7 +96,7 @@ const App = () => {
           <Route path="/Test" element={<Demo />} />
           <Route path="/CalcXpert" element={<Maths />} />
           <Route path="/Richtext" element={<Richtext />} />
-        
+          <Route path="/Summarize" element={<Summarize />} />
         </Routes>
 
         <Footer2 />
