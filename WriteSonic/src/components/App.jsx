@@ -37,7 +37,7 @@ import Repo from "./Education/Repo";
 import Temp from "./Temp";
 import Gallery from "./Gallery";
 import EduHome from "./Education/EduHome";
-import Demo from "./Demo";
+import Demo from "./ArtGallery";
 
 import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
@@ -50,7 +50,8 @@ import Cas from "./CalcXpert/Cas";
 import ScientificCalculator from "./CalcXpert/ScientificCalculator";
 import Classic from "./CalcXpert/Classic";
 import ThreeD from "./CalcXpert/ThreeD";
-import Demo2 from "./Demo2"
+import Demo2 from "./Artist"
+import Arthome from "./Art/Arthome";
 const App = () => {
   return (
     <div>
@@ -102,6 +103,7 @@ const App = () => {
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
+          <Route path="/Arthome" element={<Arthome />} />
           <Route path="/Tester" element={<Demo2 />} />
        
           <Route path="/CalcXpert" element={<Maths />} />
