@@ -1,6 +1,54 @@
 import React from "react";
 import { useState,useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import "./RichTextComponent.css"; 
+import axios from "axios";
+const RichTextComponent = ({ content }) => {
+  const [formattedParagraphs, setFormattedParagraphs] = useState('');
+
+  useEffect(() => {
+    const fetchFormattedText = async () => {
+      try {
+        const response = await axios.post(
+          'https://api.github.com/markdown',
+          {
+            text: content,
+          },
+          {
+            headers: {
+              'Accept': 'application/vnd.github+json',
+              'Authorization': 'Bearer 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',
+              'X-GitHub-Api-Version': '2022-11-28',
+            },
+          }
+        );
+        setFormattedParagraphs(response.data);
+      } catch (error) {
+        console.log("this",error);
+      }
+      
+    };
+
+    fetchFormattedText();
+  }, [content]);
+
+  const handleCopy = () => {
+    const el = document.createElement('textarea');
+    el.value = formattedParagraphs;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  };
+
+  return (
+    <div className="article-container">
+      <div dangerouslySetInnerHTML={{ __html: formattedParagraphs }}></div>
+      <button className="copy-button" onClick={handleCopy}>Copy</button>
+    </div>
+  );
+};
+
 const ProfilePage = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
   const [Myuser, setMyser] = useState({
@@ -17,7 +65,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     // Fetch content when the component mounts
-    fetchContent();
+    // fetchContent();
   }, []);
 
   const fetchContent = async () => {
@@ -98,14 +146,10 @@ const ProfilePage = () => {
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
-    </div> )}
-    <div className="bg-blue-100 p-4">
+            <div className="bg-blue-100 p-4">
       {isAuthenticated && (
         <>
-          <h2 className="text-2xl font-bold mb-4">Content for User: {user.name}</h2>
+          <h4 className="text-2xl font-bold mb-4">Your Previous Posts,Articles,Ads</h4>
           <button
             className="bg-blue-500 text-white px-4 py-2 rounded-md mb-4"
             onClick={handleGetContent}
@@ -130,8 +174,10 @@ const ProfilePage = () => {
               {item.type === 'article' && (
                 <>
                   <h3 className="text-lg font-bold mb-2">Article</h3>
-                  <p className="text-gray-800 mb-1">Title: {item.title}</p>
-                  <p className="text-gray-800 mb-1">Content: {item.content}</p>
+                  <h1 className="text-lg font-bold mb-2">Title: {item.title}</h1>
+               
+                  <RichTextComponent content={item.content} />
+           
                 </>
               )}
               {(item.type === 'twitter' || item.type === 'instagram') && (
@@ -147,7 +193,12 @@ const ProfilePage = () => {
           ))}
         </>
       )}
-    </div></>
+    </div>
+          </div>
+        </div>
+      </div>
+    </div> )}
+    </>
 
   
   );
