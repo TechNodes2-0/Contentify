@@ -6,7 +6,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+const superagent = require('superagent');
 
 
 // Route to generate the RSS feed
@@ -227,7 +227,21 @@ app.get("/content", (req, res) => {
 
 
 
-
+app.post('/art', (req, res) => {
+    superagent
+      .post('https://api.artsy.net/api/tokens/xapp_token')
+      .send({ client_id: "06a8d4276b6d62191c3a", client_secret: "6e77fddb513e94a3ef1a6ac2db0ec807" })
+      .end((err, response) => {
+        if (err) {
+          console.error('Error authenticating:', err);
+          res.status(500).json({ error: 'Failed to authenticate' });
+        } else {
+          xappToken = response.body.token;
+          res.status(200).json({ token: xappToken });
+        }
+      });
+  });
+  
 // Start the server
 app.listen(3000, () => {
     console.log('Server started on port 3000');

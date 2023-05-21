@@ -38,6 +38,7 @@ import Temp from "./Temp";
 import Gallery from "./Gallery";
 import EduHome from "./Education/EduHome";
 import Demo from "./Demo";
+
 import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
@@ -100,6 +101,7 @@ const App = () => {
           <Route path="/Certi" element={<Cert />} />
           <Route path="/temp" element={<Temp />} />
           <Route path="/Test" element={<Demo />} />
+       
           <Route path="/CalcXpert" element={<Maths />} />
           <Route path="/Grapic" element={<Grapic />} />
           <Route path="/Geometry" element={<Geometry />} />
