@@ -12,7 +12,7 @@ const TitleCard = ({ Title, isSelected, onClick }) => {
   };
   
 
-const TitleSelection = ({ titles}) => {
+const TitleSelection = ({ titles,numTitles }) => {
   const [selectedTitle, setSelectedTitle] = React.useState('');
   const [Move,SetMove] = React.useState(false);
 
@@ -32,9 +32,9 @@ const TitleSelection = ({ titles}) => {
     }
   };
 
-  return (
+return (
     <>
-       {Move ? <ArticleIntro Title={selectedTitle}/> :( <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+       {Move ? <ArticleIntro Title={selectedTitle} numTitles={numTitles} /> :( <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
    <h2 className="text-2xl font-bold mb-4">Select a Title</h2>
    <div className="title-list">
      {titles.map((title) => (
@@ -54,9 +54,8 @@ const TitleSelection = ({ titles}) => {
    </button>
  </div>)}
  </>
-
-   
-  );
+  
+);
 };
 
 export default TitleSelection;
