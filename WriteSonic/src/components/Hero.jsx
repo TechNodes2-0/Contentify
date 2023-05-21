@@ -193,6 +193,32 @@ export default function Hero() {
                   Check out here
                 </Link>
               </div>
+
+              <div>
+                <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/1048/1048944.png"
+                    alt="mockup"
+                    width="40px"
+                  />
+                </div>
+                <h3 class="mb-2 text-xl font-bold dark:text-white">
+                  {" "}
+                  Art and Cluture
+                </h3>
+                <p class="text-gray-500 dark:text-gray-400">
+                  This feature aims to provide users with a comprehensive
+                  collection of resources related to climate change. It serves
+                  as a hub for information, education, and awareness on the
+                  topic.
+                </p>
+                <Link
+                  to="/Climate"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Check out here
+                </Link>
+              </div>
             </div>
           </div>
         </div>
