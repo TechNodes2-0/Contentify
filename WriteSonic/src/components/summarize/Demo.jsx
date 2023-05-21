@@ -121,18 +121,18 @@ const Demo = () => {
           <p className="font-inter font-bold text-black text-center">
             Well, that wasn't supposed to happen...
             <br />
-            <span className="font-satoshi font-normal text-gray-700">
+            <span className="font-satoshi font-normal text-gray-900">
               {error?.data?.error}
             </span>
           </p>
         ) : (
           article.summary && (
             <div className="flex flex-col gap-3">
-              <h2 className="font-satoshi font-bold text-gray-600 text-xl">
+              <h2 className="font-satoshi font-bold text-white text-xl bg-gray-900">
                 Article <span className="blue_gradient">Summary</span>
               </h2>
-              <div className="summary_box">
-                <p className="font-inter font-medium text-sm text-gray-700">
+              <div className="">
+                <p className="font-inter font-medium text-sm text-white bg-gray-900">
                   {article.summary}
                 </p>
               </div>
