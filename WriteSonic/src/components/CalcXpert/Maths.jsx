@@ -41,10 +41,15 @@ export default function Maths() {
   }, []);
 
   return (
-    <div className="contentBox" id="contentBox">
-      <h1 className="text-2xl font-bold">CalcXpert</h1>
+    <div
+      className="text-center bg-gray-500 text-white py-4"
+      style={{
+        backgroundImage: "linear-gradient(to bottom, #2c3e50, #3498db)",
+      }}
+    >
+      <h1 className="text-4xl font-bold mb-8">CalcXpert</h1>
 
-      <div className="grid grid-cols-3 gap-4 mt-4">
+      <div className="grid grid-cols-3 gap-4">
         <div className="card bg-blue-500 hover:bg-blue-600">
           <a
             className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
@@ -110,14 +115,10 @@ export default function Maths() {
         </div>
       </div>
 
-      
-
-      <h5 className="text-xl font-bold mt-8">3D Calculator</h5>
-      <p className="text">
+      <h5 className="text-2xl font-bold mt-8">3D Calculator</h5>
+      <p className="text-lg mt-4">
         GeoGebra CAS Calculator can be embedded as an app. Preloading resources
-        is optional.
-        <br />
-        For details about customization please refer to{" "}
+        is optional. For details about customization, please refer to the{" "}
         <a
           className="inlineLink"
           target="_blank"
@@ -125,8 +126,7 @@ export default function Maths() {
         >
           Documentation
         </a>
-        .<br />
-        For details about the app have a look at{" "}
+        . For details about the app, have a look at the{" "}
         <a
           className="inlineLink"
           target="_blank"
@@ -134,10 +134,9 @@ export default function Maths() {
         >
           Learn 3D Calculator
         </a>
-        .
       </p>
 
-      <div id="applet_container"></div>
+      <div id="applet_container" className=" p-4 m-auto"></div>
     </div>
   );
 }
