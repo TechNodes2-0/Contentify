@@ -100,7 +100,7 @@ export default function Grapic() {
             <a
               className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
               id="app_classic"
-              href="example-tools.html"
+              href="/Classic"
             >
               Classic
             </a>

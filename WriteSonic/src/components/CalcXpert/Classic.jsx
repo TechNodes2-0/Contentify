@@ -50,44 +50,137 @@ const GeoGebraApp = () => {
 
 
   return (
-    <div className="contentBox" id="contentBox">
-      <h1>CalcXpert</h1>
+    <div className="contentBox bg-gray-500 text-white py-4" id="contentBox" style={{
+      backgroundImage: "linear-gradient(to bottom, #2c3e50, #3498db)",
+    }}>
+      <div className="contentBox" id="contentBox">
+        <h1 className="text-2xl font-bold text-center">CalcXpert</h1>
+
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <div className="card bg-blue-500 hover:bg-blue-600">
+            <a
+              className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
+              id="app_graphing"
+              href="example-graphing.html"
+            >
+              Graphing
+            </a>
+          </div>
+          <div className="card bg-green-500 hover:bg-green-600">
+            <a
+              className="appBtn app-icon-geometry text-white font-bold py-2 px-4 rounded"
+              id="app_geometry"
+              href="example-geometry.html"
+            >
+              Geometry
+            </a>
+          </div>
+          <div className="card bg-yellow-500 hover:bg-yellow-600">
+            <a
+              className="appBtn app-icon-scientific text-white font-bold py-2 px-4 rounded"
+              id="app_scientific"
+              href="example-scientific.html"
+            >
+              Scientific
+            </a>
+          </div>
+          <div className="card bg-purple-500 hover:bg-purple-600">
+            <a
+              className="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded"
+              id="app_cas"
+              href="example-cas.html"
+            >
+              CAS
+            </a>
+          </div>
+          <div className="card bg-red-500 hover:bg-red-600">
+            <a
+              className="appBtn app-icon-3d text-white font-bold py-2 px-4 rounded"
+              id="app_3d"
+              href="example-3d.html"
+            >
+              3D
+            </a>
+          </div>
+          <div className="card bg-gray-500 hover:bg-gray-600">
+            <a
+              className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
+              id="app_classic"
+              href="/Classic"
+            >
+              Classic
+            </a>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center">
+          <h5 className="text-xl font-bold">3D Calculator</h5>
+          <p className="text-lg">
+            GeoGebra CAS Calculator can be embedded as an app. Preloading
+            resources is optional.
+          </p>
+          <p className="text-lg">
+            For details about customization, please refer to{" "}
+            <a
+              className="inlineLink"
+              target="_blank"
+              href="https://wiki.geogebra.org/en/Reference:Applet_Parameters"
+            >
+              Documentation
+            </a>
+            .
+          </p>
+          <p className="text-lg">
+            For details about the app, have a look at{" "}
+            <a
+              className="inlineLink"
+              target="_blank"
+              href="https://www.geogebra.org/m/aWhYSpvy"
+            >
+              Learn 3D Calculator
+            </a>
+            .
+          </p>
+        </div>
+      </div>
       <p>
         <br />
-        <a className="appBtn app-icon-graphing" href="example-graphing.html">
+        <div className="flex gap-4 flex-col">
+        <a className="appBtn app-icon-graphing bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40" href="example-graphing.html">
           Graphing
         </a>
-        <a className="appBtn app-icon-geometry" href="example-geometry.html">
+        <a className="appBtn app-icon-geometry bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40" href="example-geometry.html">
           Geometry
         </a>
         <a
-          className="appBtn app-icon-scientific"
+          className="appBtn app-icon-scientific bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40"
           id="app_scientific"
           href="example-scientific.html"
         >
           Scientific
         </a>
-        <a className="appBtn app-icon-cas" id="app_cas" href="example-cas.html">
+        <a className="appBtn app-icon-cas bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40" id="app_cas" href="example-cas.html">
           CAS
         </a>
-        <a className="appBtn app-icon-3d" id="app_3d" href="example-3d.html">
+        <a className="appBtn app-icon-3d bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40" id="app_3d" href="example-3d.html">
           3D
         </a>
         <a
-          className="appBtn app-icon-classic active"
+          className="appBtn app-icon-classic active bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40"
           id="app_classic"
           href="example-tools.html"
         >
           Classic
         </a>
+        </div>
         <br />
         <br />
-        <a className="appBtn noimage" id="app_editor" href="example-editor.html">
+        <a className="appBtn noimage bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor:pointer w-40" id="app_editor" href="example-editor.html">
           Equation Editor
         </a>
       </p>
 
-      <h5>GeoGebra Classic</h5>
+      <h5 className="text-2xl font-bold text-center">GeoGebra Classic</h5>
       <p className="text">
         GeoGebra Classic can be embedded as an app. Preloading a resource is
         optional. <br />
