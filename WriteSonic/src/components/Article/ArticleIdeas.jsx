@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import TitleSelection from "./TitlesCard";
 import axios from "axios";
+import "../RichTextComponent.css"; // Import CSS file
+
 
 const TextGenerator = () => {
   const [projectName, setProjectName] = useState("");
@@ -18,6 +20,7 @@ const TextGenerator = () => {
   const [selectedTitle, setSelectedTitle] = useState("");
   const [showText, setShowText] = useState(false);
   const [clicked, Setclicked] = useState(false);
+
 
   useEffect(() => {
     // Reset generated text when inputs change
@@ -41,8 +44,10 @@ const TextGenerator = () => {
     };
 
     try {
+      console.log(typeof numTitles.toString())
+      const temp= numTitles.toString()
       const response = await axios.post(
-        "https://api.writesonic.com/v2/business/content/blog-ideas?engine=economy&language=en",
+        `https://api.writesonic.com/v2/business/content/blog-ideas?engine=premium&language=en&num_copies=${temp}`,
         postData,
         config
       );
@@ -55,21 +60,30 @@ const TextGenerator = () => {
 
   const generateTitles = async () => {
     Setclicked(true);
+    setIsLoading(true);
+
     const newTitles = [];
-    const copies = 3;
+    const copies = parseInt(numTitles, 10);
 
     try {
+      console.clear();
+      const response = await Output();
+      const title = response.data;
+      console.log("this is title");
+      console.log(title); // Assuming the response contains the generated title
+      // console.log(s);
       for (let i = 0; i < copies; i++) {
-        const response = await Output();
-        const title = response.data;
-        console.log(title[0]); // Assuming the response contains the generated title
-        newTitles.push({ id: Date.now() + Math.random(), title: title[0] });
+        newTitles.push({ id: Date.now() + Math.random(), title: title[i] });
       }
 
       setTitles(newTitles);
     } catch (error) {
       console.error(error);
       // Handle the error appropriately
+    }
+    finally{
+      setIsLoading(false);
+
     }
   };
   const generateText = () => {
@@ -84,11 +98,17 @@ const TextGenerator = () => {
     }, 2000);
   };
 
-  return (
+return (
     <>
-      {clicked && titles.length > 0 ? (
-        <TitleSelection titles={titles} />
-      ) : (
+    {isLoading ? (
+      <div className="loadingwraper">
+        <div className="loading-spinner">Loading...</div>
+      </div>
+    ) : (
+      <>
+        {clicked && titles.length > 0 ? (
+          <TitleSelection  titles={titles} numTitles={numTitles} />
+        ) : (
         <div className="flex flex-col md:flex-row justify-center items-start md:items-center h-screen bg-blue-100">
           <div className="max-h-screen md:max-h-full w-full md:w-1/2 bg-white rounded-lg shadow-lg p-8 md:mr-4">
             <h2 className="text-2xl font-bold mb-4 text-blue-800">
@@ -200,6 +220,8 @@ const TextGenerator = () => {
           </Transition>
         </div>
       )}
+      </>
+    )}
     </>
   );
 };
