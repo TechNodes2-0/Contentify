@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { FaLinkedin, FaCopy, FaEdit } from "react-icons/fa";
 import axios from "axios";
-
+import { useAuth0 } from "@auth0/auth0-react";
 function LinkedInPost() {
+  let temp="";
+  const { user, isAuthenticated} = useAuth0();
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("")
   const [keyword, setKeyword] = useState("")
@@ -12,6 +14,8 @@ function LinkedInPost() {
   const [isEditing, setIsEditing] = useState(false);
   const [editedPost, setEditedPost] = useState("");
   const [editedPostIndex, setEditedPostIndex] = useState(null);
+  const[adDesc,SetadDesc]=useState('');
+  const[adTitle,SetadTitle]=useState('');
 
   async function Output() {
     const postData = {
@@ -45,6 +49,8 @@ function LinkedInPost() {
     setIsLoading(true);
     const post = await Output();
     console.log(post.data);
+    SetadDesc(post.data[0].ad_description);
+    SetadTitle(post.data[0].ad_title);
     setTimeout(() => {
       const posts = Array.from(
         { length: numResponses },
@@ -85,6 +91,30 @@ function LinkedInPost() {
     updatedPosts[editedPostIndex] = editedPost;
     setGeneratedPosts(updatedPosts);
   };
+  async function save()
+    {
+      
+      console.log(generatedPosts[0].ad_title);
+      console.log(user.sub);
+      try {
+        // Send a POST request to the server to save the article
+        const response = await axios.post('http://localhost:3000/Content', {
+          userId: user.sub,
+         
+        adsTitle:adTitle,
+          adsDescription: adDesc,
+          content:adDesc,
+          type:"ads"
+        });
+  
+        console.log('ads saved:', response.data);
+        // Reset the form
+        // setTitle('');
+        // setContent('');
+      } catch (error) {
+        console.error('Error saving LinkedInAdsPost:', error);
+      }
+    }
 
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-blue-100">
@@ -151,6 +181,12 @@ function LinkedInPost() {
                   <button onClick={() => handleCopyPost(post)}>
                     <FaCopy className="text-blue-500 hover:text-blue-700 transition duration-200" />
                   </button>
+                  <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={save}
+      >
+        Save Post
+      </button>
                 </div>
               </div>
               {isEditing && editedPostIndex === index ? (

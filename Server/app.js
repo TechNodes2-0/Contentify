@@ -140,10 +140,87 @@ app.post('/social-media-posts', async (req, res) => {
     }
 });
 
+const ContentSchema = new mongoose.Schema({
+    userId: { type: String },
+    type: { type: String, enum: ['article', 'instagram', 'twitter', 'linkedin', 'ads'] },
+    title: { type: String, required: function() { return this.type === 'article'; } },
+    content: { type: String, required: true },
+    image: { type: String, required: function() { return this.type === 'instagram' || this.type === 'twitter'; } },
+    adsTitle: { type: String, required: function() { return this.type === 'ads'; } },
+    adsDescription: { type: String, required: function() { return this.type === 'ads'; } },
+  });
+  
+  // Define the SocialMediaPost model
+  
+  
+  const Content = mongoose.model('Content', ContentSchema);
+app.post('/Content', async (req, res) => {
+    try {
+        const { userId, type, title, content, image, adsTitle, adsDescription } = req.body;
+        console.log(userId);
+
+        // Create a new social media post instance
+        const Contentpost = new Content({
+            userId,
+            type,
+            title,
+            content,
+            image,
+            adsTitle,
+            adsDescription
+        });
+
+        // Save the social media post to MongoDB
+        const savedPost = await Contentpost.save();
+        res.status(200).json(savedPost);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Failed to save the Contet' });
+    }
+});
 
 
+// Assuming you have the necessary dependencies and configurations
 
-
+// Define the route handler
+app.get("/content", (req, res) => {
+    const userId = req.query.userId;
+  
+    // Fetch content from the database based on userId
+    // Example using Mongoose:
+    Content.find({ userId })
+      .then((content) => {
+        console.log(content);
+        const transformedContent = content.map((item) => {
+          const transformedItem = { ...item };
+          if (item.type === "ads") {
+            transformedItem.type = "ads";
+            transformedItem.adsTitle = item.adsTitle;
+            transformedItem.adsDescription = item.adsDescription;
+          } else if (item.type === "linkedin") {
+            transformedItem.type = "linkedin";
+            transformedItem.content = item.content;
+          } else if (item.type === "article") {
+            transformedItem.type = "article";
+            transformedItem.title = item.title;
+            transformedItem.content = item.content;
+          } else if (item.type === "twitter" || item.type === "instagram") {
+            transformedItem.type = item.type;
+            transformedItem.content = item.content;
+            transformedItem.image = item.image;
+          }
+          return transformedItem;
+        });
+        console.log(transformedContent);
+        res.json(transformedContent);
+      })
+      .catch((error) => {
+        console.log("Error fetching content:", error);
+        res.status(500).json({ error: "Error fetching content" });
+      });
+  });
+  
+  
 
 
 

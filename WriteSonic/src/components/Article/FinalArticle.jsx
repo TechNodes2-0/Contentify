@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../RichTextComponent.css"; // Import CSS file
 
-<<<<<<< Updated upstream
-=======
 import { useAuth0 } from "@auth0/auth0-react";
 
 const styles = {
@@ -26,7 +24,6 @@ const styles = {
     fontWeight: 'normal',
   },
 };
->>>>>>> Stashed changes
 const RichTextComponent = ({ content }) => {
   const [formattedParagraphs, setFormattedParagraphs] = useState('');
 
@@ -74,18 +71,15 @@ const RichTextComponent = ({ content }) => {
 };
 
 const FinalArticleSection = ({ Title, Intro, Outline }) => {
-<<<<<<< Updated upstream
-  const [generatedArticle, setGeneratedArticle] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
-=======
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated} = useAuth0();
   console.log(user);
 
   const [generatedArticle, setGeneratedArticle] = useState('');
  console.log(Title);
  console.log(Intro);
  console.log(Outline);
->>>>>>> Stashed changes
   async function generateArticle() {
     setIsLoading(true);
     const postData = {
@@ -136,10 +130,11 @@ const FinalArticleSection = ({ Title, Intro, Outline }) => {
       console.log(user.sub);
       try {
         // Send a POST request to the server to save the article
-        const response = await axios.post('http://localhost:3000/articles', {
+        const response = await axios.post('http://localhost:3000/Content', {
           userId: user.sub,
          title : Title,
           content: generatedArticle,
+          type:"article"
         });
   
         console.log('Article saved:', response.data);
@@ -176,6 +171,18 @@ const FinalArticleSection = ({ Title, Intro, Outline }) => {
           <h2 className="text-2xl font-bold mb-4">Generated Article</h2>
           <div>
             <RichTextComponent content={generatedArticle} />
+            <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={downloadArticle}
+      >
+        Download Article
+      </button>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+        onClick={save}
+      >
+        save
+      </button>
           </div>
         </div>
       )}

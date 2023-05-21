@@ -70,12 +70,12 @@ function TwitterPostGenerator() {
     console.log(user.sub);
     try {
       // Send a POST request to the server to save the article
-      const response = await axios.post('http://localhost:3000/social-media-posts', {
+      const response = await axios.post('http://localhost:3000/Content', {
         userId: user.sub,
        
         content: generatedPost,
         image:`${URL.createObjectURL(image)}`,
-        Typo:"TwitterPost"
+        type:"twitter"
       });
 
       console.log('TwitterPost saved:', response.data);

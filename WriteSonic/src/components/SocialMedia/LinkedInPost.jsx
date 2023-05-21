@@ -81,12 +81,12 @@ function LinkedInPost() {
     console.log(user.sub);
     try {
       // Send a POST request to the server to save the article
-      const response = await axios.post('http://localhost:3000/social-media-posts', {
+      const response = await axios.post('http://localhost:3000/Content', {
         userId: user.sub,
        
         content: generatedPosts[0],
-        image:"",
-        Typo:"LinkedInPost"
+     
+        type:"linkedin"
       });
 
       console.log('LinkedInPost saved:', response.data);

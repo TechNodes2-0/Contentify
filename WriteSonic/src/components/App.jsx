@@ -41,12 +41,13 @@ import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
 import Footer2 from "./Footer2";
 import AdsHome from "./Ads/AdsHome";
+import History from "./History";
 const App = () => {
   return (
     <div>
       <div className="overflow-y-auto">
         <Navbar />
-
+<History/>
         <Routes>
           <Route exact path="/" element={<Hero />}></Route>
           <Route exact path="/CardsArea" element={<CardsArea />}></Route>
@@ -80,6 +81,7 @@ const App = () => {
           <Route path="/Description" element={<Description />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/Certi" element={<Cert />} />
+          <Route path="/History" element={<History />} />
 
           <Route path="/Gallery" element={<EduHome />} />
           <Route path="/Climate" element={<Homepage />} />
