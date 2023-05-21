@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import GeoGraphNav from "./GeoGraphNav";
 export default function Maths() {
   useEffect(() => {
     function perspective(p) {
@@ -48,74 +48,7 @@ export default function Maths() {
         backgroundImage: "linear-gradient(to bottom, #2c3e50, #3498db)",
       }}
     >
-      <h1 className="text-4xl font-bold mb-8">CalcXpert</h1>
-
-      <div className="grid grid-cols-3 gap-4">
-        <div className="card bg-blue-500 hover:bg-blue-600">
-          <Link
-            className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
-            id="app_graphing"
-            to="/Grapic"
-          >
-            Graphing
-          </Link>
-        </div>
-        <div className="card bg-green-500 hover:bg-green-600">
-          <Link
-            className="appBtn app-icon-geometry text-white font-bold py-2 px-4 rounded"
-            id="app_geometry"
-            to="/Geometry"
-          >
-            Geometry
-          </Link>
-        </div>
-        <div className="card bg-yellow-500 hover:bg-yellow-600">
-          <a
-            className="appBtn app-icon-scientific text-white font-bold py-2 px-4 rounded"
-            id="app_scientific"
-            href="example-scientific.html"
-          >
-            Scientific
-          </a>
-        </div>
-        <div className="card bg-purple-500 hover:bg-purple-600">
-          <Link
-            className="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded"
-            id="app_cas"
-            to="/Cas"
-          >
-            CAS
-          </Link>
-        </div>
-        <div className="card bg-red-500 hover:bg-red-600">
-          <a
-            className="appBtn app-icon-3d text-white font-bold py-2 px-4 rounded"
-            id="app_3d"
-            href="example-3d.html"
-          >
-            3D
-          </a>
-        </div>
-        <div className="card bg-gray-500 hover:bg-gray-600">
-          <a
-            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
-            id="app_classic"
-            href="/Classic"
-          >
-            Classic
-          </a>
-        </div>
-        <div className="card bg-gray-500 hover:bg-gray-600">
-          <a
-            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
-            id="app_classic"
-            href="example-tools.html"
-          >
-            Equation Editor
-          </a>
-        </div>
-      </div>
-
+      <GeoGraphNav />
       <h5 className="text-2xl font-bold mt-8">3D Calculator</h5>
       <p className="text-lg mt-4">
         GeoGebra CAS Calculator can be embedded as an app. Preloading resources
