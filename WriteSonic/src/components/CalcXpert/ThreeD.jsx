@@ -1,60 +1,12 @@
 import React from "react";
-
+import GeoGraphNav from "./GeoGraphNav";
 export default function ThreeD() {
   return (
     <div className="contentBox" id="contentBox">
-      <h1>Apps Integration</h1>
 
-      <p>
-        <br />
-        <a
-          className="appBtn app-icon-graphing"
-          id="app_graphing"
-          href="example-graphing.html"
-        >
-          Graphing
-        </a>
-        <a
-          className="appBtn app-icon-geometry"
-          id="app_geometry"
-          href="example-geometry.html"
-        >
-          Geometry
-        </a>
-        <a
-          className="appBtn app-icon-scientific"
-          id="app_scientific"
-          href="example-scientific.html"
-        >
-          Scientific
-        </a>
-        <a className="appBtn app-icon-cas" id="app_cas" href="example-cas.html">
-          CAS
-        </a>
-        <a
-          className="appBtn app-icon-3d active"
-          id="app_3d"
-          href="example-3d.html"
-        >
-          3D
-        </a>
-        <a
-          className="appBtn app-icon-classic"
-          id="app_classic"
-          href="example-tools.html"
-        >
-          Classic
-        </a>
-        <br />
-        <br />
-        <a
-          className="appBtn noimage"
-          id="app_editor"
-          href="example-editor.html"
-        >
-          Equation Editor
-        </a>
-      </p>
+<GeoGraphNav/>
+
+     
 
       <h5>3D Calculator</h5>
       <p className="text">

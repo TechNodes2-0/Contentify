@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import GeoGraphNav from "./GeoGraphNav"
 export default function Geometry() {
   useEffect(() => {
     function perspective(p) {
@@ -43,68 +43,14 @@ export default function Geometry() {
 
   return (
     <div
-      className="contentBox flex flex-col items-center justify-center h-screen"
+      className="contentBox flex flex-col items-center justify-center h-screen pt-50 "
       style={{
         backgroundImage: "linear-gradient(to bottom, #2c3e50, #3498db)",
       }}
     >
-      <div className="grid grid-cols-6 gap-4 mt-8">
-        <div className="card bg-blue-500 hover:bg-blue-600">
-          <a
-            className="appBtn app-icon-graphing text-white font-bold py-2 px-4 rounded"
-            id="app_graphing"
-            href="example-graphing.html"
-          >
-            Graphing
-          </a>
-        </div>
-        <div className="card bg-green-500 hover:bg-green-600">
-          <Link
-            className="appBtn app-icon-geometry active text-white font-bold py-2 px-4 rounded"
-            id="app_geometry"
-            to="/Geometry"
-          >
-            Geometry
-          </Link>
-        </div>
-        <div className="card bg-yellow-500 hover:bg-yellow-600">
-          <a
-            className="appBtn app-icon-scientific text-white font-bold py-2 px-4 rounded"
-            id="app_scientific"
-            href="example-scientific.html"
-          >
-            Scientific
-          </a>
-        </div>
-        <div className="card bg-purple-500 hover:bg-purple-600">
-          <a
-            className="appBtn app-icon-cas text-white font-bold py-2 px-4 rounded"
-            id="app_cas"
-            href="example-cas.html"
-          >
-            CAS
-          </a>
-        </div>
-        <div className="card bg-red-500 hover:bg-red-600">
-          <a
-            className="appBtn app-icon-3d text-white font-bold py-2 px-4 rounded"
-            id="app_3d"
-            href="example-3d.html"
-          >
-            3D
-          </a>
-        </div>
-        <div className="card bg-gray-500 hover:bg-gray-600">
-          <a
-            className="appBtn app-icon-classic text-white font-bold py-2 px-4 rounded"
-            id="app_classic"
-            href="example-tools.html"
-          >
-            Classic
-          </a>
-        </div>
-      </div>
-
+    <div>
+      <GeoGraphNav/>
+</div>
       <h5 className="text-2xl font-bold mt-8 text-white">Geometry</h5>
       <p className="text-lg text-white">
         GeoGebra Geometry can be embedded as an app. Preloading a resource is
