@@ -22,5 +22,8 @@
     "nodemon": "^2.0.22",
     "rss": "^1.2.2",
     "superagent": "^8.0.9"
+  },
+  "engines": {
+    "node": ">=14 "
   }
 }
