@@ -6,6 +6,14 @@ function Navbar() {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  async function Logout()
+  {
+    const logoutUrl = `https://dev-fkzyzzay6f6jrars.us.auth0.com/v2/logout?returnTo=${encodeURIComponent(
+      window.location.origin
+    )}`;
+    window.location.href = logoutUrl;
+    logout();
+  }
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -83,7 +91,7 @@ function Navbar() {
                 </a>
               ) : (
                 <a
-                  onClick={() => logout()}
+                  onClick={() => Logout()}
                   href=""
                   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation "
                 >
