@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 const superagent = require('superagent');
 const axios =require('axios');
-
+require('dotenv').config();
 // Route to generate the RSS feed
 app.use(express.static('/public'));
 app.use(cors());
@@ -67,7 +67,7 @@ app.get('/rss', (req, res) => {
     // Send the generated RSS feed XML as the response
     res.send(rssXml);
 });
-mongoose.connect('mongodb+srv://Jazzy49:MyNodeApp@nodeprojects.tsxlcqi.mongodb.net/Articles?retryWrites=true&w=majority', {
+mongoose.connect(`${process.env.MONGO_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -280,7 +280,7 @@ app.get("/content", (req, res) => {
 app.post('/art', (req, res) => {
     superagent
       .post('https://api.artsy.net/api/tokens/xapp_token')
-      .send({ client_id: "06a8d4276b6d62191c3a", client_secret: "6e77fddb513e94a3ef1a6ac2db0ec807" })
+      .send({ client_id: `${process.env.CLIENT_ID}` ,client_secret: `${process.env.CLIENT_SECRET}`})
       .end((err, response) => {
         if (err) {
           console.error('Error authenticating:', err);
