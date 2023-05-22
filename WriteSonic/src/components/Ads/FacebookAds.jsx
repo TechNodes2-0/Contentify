@@ -26,7 +26,7 @@ function LinkedInPost() {
       headers: {
         accept: 'application/json',
         'content-type': 'application/json',
-        'X-API-KEY': 'e50a69d5-e75a-434d-8b29-a14d66bd9a52'
+        'X-API-KEY': `${import.meta.env.VITE_AI_API_KEY}`
       }
     };
 

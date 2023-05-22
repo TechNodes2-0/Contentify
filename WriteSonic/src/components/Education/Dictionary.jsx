@@ -14,7 +14,7 @@ const DictionaryComponent = () => {
         {
           headers: {
             "X-RapidAPI-Key":
-              "e003362e7bmsh3bbb66c7edff81ap122171jsn748af86ffe2e",
+              `${import.meta.env.VITE_DICTIONARY_API_KEY}`,
             "X-RapidAPI-Host": "dictionary-data-api.p.rapidapi.com",
           },
         }

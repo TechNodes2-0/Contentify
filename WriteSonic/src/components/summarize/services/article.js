@@ -7,7 +7,7 @@ export const articleApi = createApi({
     prepareHeaders: (headers) => {
       headers.set(
         "X-RapidAPI-Key",
-        "0e8c1e7698msh8f8fec1021f30a5p1d1ebdjsn374e1bd4294f"
+        `${import.meta.env.VITE_ARTICLESUMMARY_API_KEY}`
       );
       headers.set(
         "X-RapidAPI-Host",

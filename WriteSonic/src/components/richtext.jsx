@@ -16,7 +16,7 @@
             {
               headers: {
                 'Accept': 'application/vnd.github+json',
-                'Authorization': `Bearer ${process.env.API_KEY}`,
+                'Authorization':`Bearer ${import.meta.env.VITE_GITHUB_API_KEY}`,
                 'X-GitHub-Api-Version': '2022-11-28',
               },
             }

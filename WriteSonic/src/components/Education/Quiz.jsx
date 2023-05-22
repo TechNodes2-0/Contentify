@@ -12,7 +12,7 @@ const QuizComponent = () => {
 
   useEffect(() => {
     fetch(
-      "https://quizapi.io/api/v1/questions?apiKey=chzMLAG0ULALFYvcRUFjVtjwbKOW7aiPfT1SHy2j"
+      `https://quizapi.io/api/v1/questions?apiKey=${import.meta.env.VITE_QUIZ_API_KEY}`
     )
       .then((response) => response.json())
       .then((data) => {

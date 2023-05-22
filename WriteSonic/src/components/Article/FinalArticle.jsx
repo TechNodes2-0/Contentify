@@ -28,7 +28,9 @@ const RichTextComponent = ({ content }) => {
   const [formattedParagraphs, setFormattedParagraphs] = useState('');
 
   useEffect(() => {
+    
     const fetchFormattedText = async () => {
+      console.log(import.meta.env.VITE_GITHUB_API_KEY);
       try {
         const response = await axios.post(
           'https://api.github.com/markdown',
@@ -38,7 +40,7 @@ const RichTextComponent = ({ content }) => {
           {
             headers: {
               'Accept': 'application/vnd.github+json',
-              'Authorization': 'Bearer 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',
+              'Authorization': `Bearer ${import.meta.env.VITE_GITHUB_API_KEY}`,
               'X-GitHub-Api-Version': '2022-11-28',
             },
           }
@@ -100,7 +102,7 @@ const FinalArticleSection = ({ Title, Intro, Outline }) => {
       headers: {
         accept: "application/json",
         "content-type": "application/json",
-        "X-API-KEY": "e50a69d5-e75a-434d-8b29-a14d66bd9a52",
+        "X-API-KEY": `${import.meta.env.VITE_AI_API_KEY}`,
       },
     };
 
