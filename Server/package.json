@@ -24,6 +24,6 @@
     "superagent": "^8.0.9"
   },
   "engines": {
-    "node": ">=14 "
+    "node": ">=16 <17 "
   }
 }
