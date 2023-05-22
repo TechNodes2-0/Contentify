@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
 
@@ -6,14 +6,32 @@ function Navbar() {
   const { loginWithRedirect } = useAuth0();
   const { logout } = useAuth0();
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const setSessionVariable = () => {
+    localStorage.setItem("customSessionVariable", "Hello, world!");
+  };
+
+  // Clear custom session variable
+  const clearSessionVariable = () => {
+    localStorage.removeItem("customSessionVariable");
+  };
   async function Logout()
   {
-    const logoutUrl = `https://dev-fkzyzzay6f6jrars.us.auth0.com/v2/logout?returnTo=${encodeURIComponent(
-      window.location.origin
-    )}`;
-    window.location.href = logoutUrl;
-    logout();
+    localStorage.removeItem('auth0:access_token');
+    localStorage.removeItem('auth0:id_token');
+   logout();
   }
+  useEffect(() => {
+    if(isAuthenticated)
+    {
+      setSessionVariable();
+    }
+    else
+    {
+      clearSessionVariable();
+    }
+    
+  }, [])
+  
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -83,7 +101,9 @@ function Navbar() {
             <li>
               {!isAuthenticated ? (
                 <a
-                  onClick={() => loginWithRedirect()}
+                  onClick={() => 
+                    {loginWithRedirect();
+                    setSessionVariable();}}
                   href=""
                   class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation "
                 >
