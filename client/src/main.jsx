@@ -12,8 +12,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     domain="dev-fkzyzzay6f6jrars.us.auth0.com"
     clientId="d9LXHADHfiX1FSRNaJpkegmWAgz1jRtP"
     authorizationParams={{
-      redirect_uri: window.location.origin
+      redirect_uri: window.location.origin,
+      useRefreshTokens:true
+
     }}
+    cacheLocation="localstorage"
+   
   >
 <BrowserRouter>
 <App />
