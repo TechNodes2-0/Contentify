@@ -72,7 +72,7 @@ const ProfilePage = () => {
     const userId = user.sub;
     console.log(userId);
     try {
-      const response = await axios.get(`http://localhost:3000/content?userId=${userId}`);
+      const response = await axios.get(`https://contentify-ui85.onrender.com/content?userId=${userId}`);
       console.log(response.data);
       setContent(response.data);
     } catch (error) {

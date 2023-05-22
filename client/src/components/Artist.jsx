@@ -7,7 +7,7 @@ const ArtistCards = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/arts');
+        const response = await axios.get('https://contentify-ui85.onrender.com/arts');
         const artistsArray = Object.values(response.data).flat();
         setArtists(artistsArray);
       } catch (error) {

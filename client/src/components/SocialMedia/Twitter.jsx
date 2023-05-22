@@ -70,7 +70,7 @@ function TwitterPostGenerator() {
     console.log(user.sub);
     try {
       // Send a POST request to the server to save the article
-      const response = await axios.post('http://localhost:3000/Content', {
+      const response = await axios.post('https://contentify-ui85.onrender.com/Content', {
         userId: user.sub,
        
         content: generatedPost,
