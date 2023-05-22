@@ -89,10 +89,10 @@ export default function Arthome() {
                   Explore your favourite Artsits and feel the breeze
                 </p>
                 <Link
-                  to="/Tester"
+                  to="#"
                   class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                 >
-                  Check out here
+                  Coming Soon
                 </Link>
               </div>
             </div>
