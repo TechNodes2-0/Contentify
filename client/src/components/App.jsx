@@ -23,7 +23,6 @@ import Card from "./Climate/Card";
 import Description from "./Climate/Description";
 import Cart from "./Climate/Cart";
 import EventForm from "./Climate/EventForm";
-import Richtext from "./Richtext";
 
 import Cert from "./Climate/Cert";
 import Maths from "./CalcXpert/Maths";
@@ -116,7 +115,7 @@ const App = () => {
             path="/ScientificCalculator"
             element={<ScientificCalculator />}
           />
-          <Route path="/Richtext" element={<Richtext />} />
+         
 
           <Route path="/Summarize" element={<Summarize />} />
         </Routes>
