@@ -6,7 +6,6 @@ import axios from 'axios';
 
 function Navbar() {
   const { saveUser } = useGlobalContext();
-
   const { user, logoutUser } = useGlobalContext();
 
   const [isAuthenticated, setData] = useState(false);
@@ -16,7 +15,7 @@ function Navbar() {
   
     try {
       console.log("ja");
-      window.location.href = 'https://authentication-rb8w.onrender.com/login';
+      window.location.href = 'http://localhost:5000/login';
     
       // history.push('/dashboard');
     } catch (error) {
@@ -27,7 +26,7 @@ function Navbar() {
 
   const Logout = () => {
     setData(false);
-    window.location.href = 'https://authentication-rb8w.onrender.com/logout';
+    window.location.href = 'http://localhost:5000/logout';
     logoutUser();
   }
 

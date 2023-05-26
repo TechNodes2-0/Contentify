@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 const config = {
-  baseURL: `https://authentication-rb8w.onrender.com`,
+  baseURL: `http://localhost:5000`,
   attemptSilentLogin: false,
   authRequired: false,
   idpLogout: true,
