@@ -28,7 +28,7 @@ const config = {
 
 const port = process.env.PORT || 3000;
 
-
+console.log(config.baseURL);
 app.use(auth(config));
 
 // Middleware to make the `user` object available for all views
