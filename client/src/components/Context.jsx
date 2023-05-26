@@ -27,7 +27,7 @@ const AppProvider = ({ children }) => {
 
   const logoutUser = async () => {
     try {
-     const response= await axios.get('https://authentication-rb8w.onrender.com/logout');
+     const response= await axios.get('http://localhost:5000/logout');
      console.log(response.data);
      if(response.data)
      {
