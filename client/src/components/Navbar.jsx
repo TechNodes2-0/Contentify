@@ -1,37 +1,47 @@
-import React, { Component,useEffect } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from './Context';
+// import useLocalState from './utils/localState';
+import axios from 'axios';
 
 function Navbar() {
-  const { loginWithRedirect } = useAuth0();
-  const { logout } = useAuth0();
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const setSessionVariable = () => {
-    localStorage.setItem("customSessionVariable", "Hello, world!");
-  };
+  const { saveUser } = useGlobalContext();
+  const { user, logoutUser } = useGlobalContext();
+
+  const [isAuthenticated, setData] = useState(false);
+  // const { alert, showAlert, loading, setLoading, hideAlert } = useLocalState();
+    // const history = useHistory();
+  const Login = async () => {
+  
+    try {
+      console.log("ja");
+      window.location.href = 'http://localhost:5000/login';
+    
+      // history.push('/dashboard');
+    } catch (error) {
+      // showAlert({ text: error.response.data.msg });
+      setLoading(false);
+    }
+  }
+
+  const Logout = () => {
+    setData(false);
+    window.location.href = 'http://localhost:5000/logout';
+    logoutUser();
+  }
 
   // Clear custom session variable
-  const clearSessionVariable = () => {
-    localStorage.removeItem("customSessionVariable");
-  };
-  async function Logout()
-  {
-    localStorage.removeItem('auth0:access_token');
-    localStorage.removeItem('auth0:id_token');
-   logout();
-  }
   useEffect(() => {
-    if(isAuthenticated)
-    {
-      setSessionVariable();
+    const urlParams = new URLSearchParams(window.location.search);
+    const isAuthenticatedParam = urlParams.get('isAuthenticated');
+    const titleParam = urlParams.get('title');
+
+    if (isAuthenticatedParam && titleParam) {
+      console.log(isAuthenticatedParam);
+      setData(isAuthenticatedParam === 'true');
     }
-    else
-    {
-      clearSessionVariable();
-    }
-    
-  }, [])
-  
+  }, []);
+
   return (
     <nav className="bg-white border-gray-200 dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -57,9 +67,9 @@ function Navbar() {
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </button>
@@ -99,28 +109,24 @@ function Navbar() {
               </a>
             </li>
             <li>
-              {!isAuthenticated ? (
-                <a
-                  onClick={() => 
-                    {loginWithRedirect();
-                    setSessionVariable();}}
-                  href=""
-                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation "
+              {!user ? (
+                <button
+                  onClick={Login}
+                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation"
                 >
                   Login
-                </a>
+                </button>
               ) : (
-                <a
-                  onClick={() => Logout()}
-                  href=""
-                  class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation   dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation "
+                <button
+                  onClick={Logout}
+                  className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 hover-underline-animation dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover-underline-animation"
                 >
                   Logout
-                </a>
+                </button>
               )}
             </li>
             <li>
-              {isAuthenticated && (
+              {user && (
                 <div className="flex  gap-4 ">
                   <Link to="/Profile">
                     <img

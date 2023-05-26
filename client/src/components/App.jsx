@@ -38,6 +38,7 @@ import Temp from "./Temp";
 import Gallery from "./Gallery";
 import EduHome from "./Education/EduHome";
 import Demo from "./ArtGallery";
+import Appwrite from "./Appwrite";
 
 import SocialmediaHome from "./SocialMedia/SocialmediaHome";
 import { Footer } from "flowbite-react";
@@ -56,6 +57,8 @@ const App = () => {
   return (
     <div>
       <div className="overflow-y-auto">
+      {(1===4) ? (<Appwrite/>) :(
+        < >
         <Navbar />
 
         <Routes>
@@ -70,7 +73,7 @@ const App = () => {
           <Route path="/LinkedInAds" element={<LinkedInAds />} />
           <Route path="/FacebookAds" element={<FacebookAds />} />
 
-          <Route path="/Profile" element={<Profile />} />
+          {/* <Route path="/Profile" element={<Profile />} /> */}
           <Route path="/Articles" element={<ArticleIdeas />} />
           <Route path="/Article" element={<Article />} />
           <Route path="/About" element={<About />} />
@@ -122,7 +125,9 @@ const App = () => {
         </Routes>
 
         <Footer2 />
-      </div>
+     </>
+      )}
+       </div>
     </div>
   );
 };
