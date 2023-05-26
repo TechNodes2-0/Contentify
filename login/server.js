@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 const config = {
-  baseURL:process.env.BASEURL,
+  baseURL: process.env.BASE_URL,
   attemptSilentLogin: false,
   authRequired: false,
   idpLogout: true,
