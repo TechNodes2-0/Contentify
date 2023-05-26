@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     const  title= 'Auth0 Webapp sample Nodejs'
    const isAuthenticated= false
    req.oidc.user=null;
-    res.redirect(`http://localhost:5173`);
+    res.redirect(`http://localhost:5173/`);
   }
 });
 
