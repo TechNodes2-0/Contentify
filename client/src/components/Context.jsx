@@ -16,7 +16,7 @@ const AppProvider = ({ children }) => {
 
   const fetchUser = async () => {
     try {
-      const { data } = await axios.get(`/profile`);
+      const { data } = await axios.get(`https://authentication-rb8w.onrender.com/profile`);
       console.log(data);
       saveUser(JSON.parse(data.userProfile));
     } catch (error) {
