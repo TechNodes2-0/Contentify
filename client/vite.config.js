@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/profile": {
-        target: "http://localhost:5000",
+        target: "https://authentication-rb8w.onrender.com",
         changeOrigin: true,
         secure: false,
       },
