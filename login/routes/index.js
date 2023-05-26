@@ -22,33 +22,6 @@ router.get('/profile', requiresAuth(), function (req, res, next) {
   //   userProfile: JSON.stringify(req.oidc.user, null, 2),
   //   title: 'Profile page'
   // });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log("hio");
   res.send({
     title:"jayesh",
     userProfile: JSON.stringify(req.oidc.user, null, 2)
