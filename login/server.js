@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 const config = {
-  baseURL: `${process.env.BASE_URL}`,
+  baseURL: `http://localhost:5000`,
   attemptSilentLogin: false,
   authRequired: false,
   idpLogout: true,
