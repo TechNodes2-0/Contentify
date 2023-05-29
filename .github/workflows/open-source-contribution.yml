@@ -1,0 +1,54 @@
+name: Open Source Contribution
+
+on:
+  issues:
+    types:
+      - opened
+  pull_request_target:
+    types:
+      - opened
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Comment on Issue
+        if: github.event_name == 'issues'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issueComment = `
+              Hello 👋 @${{ github.event.issue.user.login }}, I hope you are doing well!
+              <br>
+              Thank you for raising an issue. We will investigate the issue and get back to you as soon as possible.
+              Please make sure you have given us as much context as possible.
+            `;
+            github.issues.createComment({
+              issue_number: ${{ github.event.issue.number }},
+              owner: '${{ github.repository_owner }}',
+              repo: '${{ github.repository }}',
+              body: issueComment
+            })
+
+      - name: Comment on Pull Request
+        if: github.event_name == 'pull_request_target'
+        uses: actions/github-script@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prComment = `
+              Hello 👋 @${{ github.event.pull_request.user.login }}, I hope you are doing well!
+              <br>
+              Thank you for raising your pull request and contributing to our Community 🎉
+              Please make sure you have followed our contributing guidelines. We will review it as soon as possible.
+            `;
+            github.issues.createComment({
+              issue_number: ${{ github.event.pull_request.number }},
+              owner: '${{ github.repository_owner }}',
+              repo: '${{ github.repository }}',
+              body: prComment
+            })
