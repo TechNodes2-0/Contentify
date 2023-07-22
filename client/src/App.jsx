@@ -3,7 +3,7 @@ import Home from "./Home";
 
 import Profile from "./Profile";
 
-// import "../style/App.css";
+
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 
